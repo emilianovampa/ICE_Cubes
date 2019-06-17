@@ -70,18 +70,18 @@
     </Compile>
     <Compile Include="Rol.cs" />
     <Compile Include="usuario.cs" />
-    <Compile Include="loginController.cs" />
+    <Compile Include="Login\loginController.cs" />
     <Compile Include="CompraReservaPasaje\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CompraReservaPasaje\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Coneccion\ConeccionSQL.cs" />
-    <Compile Include="loginView.cs">
+    <Compile Include="Conexion\ConexionSQL.cs" />
+    <Compile Include="Login\loginView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="loginView.Designer.cs">
+    <Compile Include="Login\loginView.Designer.cs">
       <DependentUpon>loginView.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneracionViaje\Form1.cs">
@@ -114,7 +114,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="loginView.resx">
+    <EmbeddedResource Include="Login\loginView.resx">
       <DependentUpon>loginView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -141,7 +141,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\327CC63B.PNG" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

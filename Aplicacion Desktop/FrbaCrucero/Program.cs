@@ -16,6 +16,8 @@ namespace FrbaCrucero
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            usuario unUsuario = new usuario();
+            loginController UnController = new loginController();
             Application.Run(new loginView());
         }
     }

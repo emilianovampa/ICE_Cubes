@@ -7,16 +7,16 @@ using System.Data.SqlClient;
 
 namespace FrbaCrucero
 {
-    class ConeccionSQL
+    class ConexionSQLS
     {
         // La idea es que sea un Singleton, al menos por el momento
 
-        private static SqlConnection coneccion;
+        private static SqlConnection Conexion;
 
         // Establece la configuración de la conección con la bd
-        static ConeccionSQL() {
-            coneccion = new SqlConnection();
-            coneccion.ConnectionString =
+        static ConexionSQLS() {
+            Conexion = new SqlConnection();
+            Conexion.ConnectionString =
             "Data Source=localhost\\SQLSERVER2012;" +
             "Initial Catalog=GD1C2019;" +
             "User ID=gdCruceros2019;" +
@@ -25,12 +25,12 @@ namespace FrbaCrucero
 
         // Retorna la instancia de SqlConnection
         public static SqlConnection getConeccion() {
-            return coneccion;
+            return Conexion;
         }
 
-        // Inicia la conección
+        // Inicia la Conexion
         public static void iniciarConeccion() {
-            coneccion.Open();
+            Conexion.Open();
         }
 
     }

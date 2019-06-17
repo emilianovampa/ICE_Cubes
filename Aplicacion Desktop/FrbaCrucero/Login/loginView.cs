@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaCrucero;
 
 
 namespace FrbaCrucero
@@ -16,6 +17,8 @@ namespace FrbaCrucero
         public loginView()
         {
             InitializeComponent();
+
+            //Binding bindingTest = new Binding
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -45,6 +48,7 @@ namespace FrbaCrucero
         private void ingresarboton_Click(object sender, EventArgs e)
         {
 
+            
         }
 
         private void cancelarBoton_Click(object sender, EventArgs e)
