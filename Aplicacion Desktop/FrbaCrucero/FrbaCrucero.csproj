@@ -68,6 +68,8 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ParametroStore.cs" />
+    <Compile Include="Conexion\Dictionary.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="usuario.cs" />
     <Compile Include="Login\loginController.cs" />
@@ -96,16 +98,6 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\Cabina.cs" />
-    <Compile Include="model\Activo.cs" />
-    <Compile Include="model\Recorrido.cs" />
-    <Compile Include="model\Tramo.cs" />
-    <Compile Include="model\Puerto.cs" />
-    <Compile Include="model\TipoCabina.cs" />
-    <Compile Include="model\TipoServicio.cs" />
-    <Compile Include="model\Crucero.cs" />
-    <Compile Include="model\EstadoCrucero.cs" />
-    <Compile Include="model\Marca.cs" />
     <Compile Include="PagoReserva\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

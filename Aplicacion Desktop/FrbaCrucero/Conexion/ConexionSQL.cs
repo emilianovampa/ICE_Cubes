@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace FrbaCrucero
 {
@@ -32,6 +33,43 @@ namespace FrbaCrucero
         public static void iniciarConeccion() {
             Conexion.Open();
         }
+
+        // Cierra la Conexion
+        public static void CierraConexion()
+        {
+            Conexion.Close();
+        }
+
+        // Store
+        //public static SqlDataReader ExecuteReader(string SP, Dictionary<string, object> parametros = null)
+        //{
+          
+        ////    //if (parametros == null) parametros = new Dictionary<string, object>();
+            
+        ////    SqlCommand command = new SqlCommand("ICE_CUBES." + SP, ConexionSQLS.getConeccion());
+        ////    command.CommandType = System.Data.CommandType.StoredProcedure;
+        ////    foreach (ParametroStore parametro in parametros)
+        ////    {
+        ////        SqlParameter ParametroSt = new SqlParameter();
+        ////        ParametroSt.ParameterName = ;
+        ////        ParametroSt.     =;
+        ////        ParametroSt.Direction = ;
+                
+        ////        command.Parameters.Add(parametro);
+        ////        command.Parameters.AddWithValue
+        ////    }
+
+        ////    //foreach (var parametro in parametros)
+        ////    //{
+        ////    //    command.Parameters.Add(new SqlParameter(parametro.Key, parametro.Value));
+        ////    //}
+        //    SqlDataReader result = command.ExecuteReader();
+
+        //    return result;
+        //}
+
+    
+     
 
     }
 }
