@@ -1,1 +1,2 @@
 \\VBOXSVR\FrbaBus_1°C_2019\src\FrbaCrucero\bin\Debug\FrbaCrucero.exe.config
+C:\Users\Luciano\Documents\UTN\Gestion Datos\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\bin\Debug\FrbaCrucero.exe.config
