@@ -8,7 +8,7 @@ namespace FrbaCrucero.model
 {
     class Recorrido
     {
-        public HashSet<Tramo> tramos = new HashSet<Tramo>;
+        public HashSet<Tramo> tramos = new HashSet<Tramo> { };
         private Boolean estado = true;
 
         public void eliminarRecorrido()
@@ -16,14 +16,10 @@ namespace FrbaCrucero.model
             estado = false;
             /* Agregar todo lo que sucede cuando se elimina un recorrido*/
         }
-        public void agregarDestino(Puerto destino, Double precio)
-        {
-            tramos.Add(new Tramo(getDestino(), destino, precio)); 
-        }
 
-        public void quitarTramo()
+        public HashSet<Tramo> getTramos()
         {
-
+            return tramos;
         }
 
         private Puerto getOrigen()
