@@ -528,5 +528,3 @@ $RECYCLE.BIN/
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 
 # End of https://www.gitignore.io/api/csharp,windows,visualstudio
-Aplicacion Desktop/FrbaCrucero/FrbaCrucero.csproj
-Aplicacion Desktop/FrbaCrucero/FrbaCrucero.v11.suo
