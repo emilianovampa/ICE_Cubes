@@ -14,7 +14,7 @@ namespace FrbaCrucero
 {
     public partial class loginView : Form
     {
-        usuario unUsuario = new usuario();
+        //usuario unUsuario = new usuario();
         loginController UnControllerLogin = new loginController();
         public loginView()
         {
@@ -49,9 +49,23 @@ namespace FrbaCrucero
 
         private void ingresarboton_Click(object sender, EventArgs e)
         {
-            int resultado = UnControllerLogin.Ingresar(this.usuarioTextB.Text, this.passTextB.Text);
+
+            if (!String.IsNullOrWhiteSpace(usuarioTextB.Text) && !String.IsNullOrWhiteSpace(passTextB.Text))
+            {
             
-            if (resultado == 0) ;
+            MessageBox.Show( UnControllerLogin.Ingresar(this.usuarioTextB.Text, this.passTextB.Text) );
+                       
+
+
+            }
+
+            else{
+                MessageBox.Show("Ingrese Datos de Login");
+            }
+
+
+
+
         }
 
         private void cancelarBoton_Click(object sender, EventArgs e)

@@ -16,6 +16,20 @@ namespace FrbaCrucero
         int estado { set; get; } 
         int intentos {set ; get; } 
         List<Rol> Roles = new List<Rol>();
+        private string usuario1;
+        private string pass;
+
+        public usuario(string usuario1, string pass)
+        {
+            // TODO: Complete member initialization
+            this.usuario1 = usuario1;
+            this.pass = pass;
+        }
+
+        public usuario()
+        {
+            // TODO: Complete member initialization
+        }
 
 
     }
