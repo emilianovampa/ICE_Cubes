@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FrbaCrucero.model
 {
-    public interface EstadoCrucero
+    class FueraServicio : EstadoCrucero
     {
-       void setearEstado();
+        public void setearEstado(){
+        }
     }
 }

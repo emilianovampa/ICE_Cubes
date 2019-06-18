@@ -6,10 +6,10 @@ using System.Text;
 
 namespace FrbaCrucero.model
 {
-    enum TipoCabina
+    public enum TipoCabina
     {
         [Description("Económica")] economica = 1,
-        [Description("Económica")] ejecutiva = 1.2,
-        [Description("Económica")] primera = 1.5
+        [Description("Económica")] ejecutiva = 2,
+        [Description("Económica")] primera = 3
     }
 }

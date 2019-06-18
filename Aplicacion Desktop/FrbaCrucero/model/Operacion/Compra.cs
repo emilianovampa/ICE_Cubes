@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrbaCrucero.model
 {
-    public interface EstadoCrucero
+    class Compra
     {
-       void setearEstado();
     }
 }

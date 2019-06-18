@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FrbaCrucero.model
 {
-    private enum Marca
+    public enum Marca
     {
         [Description("Costa Cruceros")] Costa,
         [Description("Royal Caribbean")] Royal,
