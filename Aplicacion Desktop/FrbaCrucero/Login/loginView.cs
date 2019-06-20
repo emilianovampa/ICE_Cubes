@@ -15,10 +15,11 @@ namespace FrbaCrucero
     public partial class loginView : Form
     {
         //usuario unUsuario = new usuario();
-        loginController UnControllerLogin = new loginController();
+        loginController UnControllerLogin;
         public loginView()
         {
             InitializeComponent();
+            UnControllerLogin = new loginController(this);
 
             //Binding bindingTest = new Binding
         }
@@ -53,9 +54,9 @@ namespace FrbaCrucero
             if (!String.IsNullOrWhiteSpace(usuarioTextB.Text) && !String.IsNullOrWhiteSpace(passTextB.Text))
             {
             
-            MessageBox.Show( UnControllerLogin.Ingresar(this.usuarioTextB.Text, this.passTextB.Text) );
+             UnControllerLogin.Ingresar(this.usuarioTextB.Text, this.passTextB.Text);
                        
-
+                
 
             }
 
@@ -80,6 +81,11 @@ namespace FrbaCrucero
           this.passLabel.Visible = true;
           this.passTextB.Visible = true;
           this.usuarioTextB.Visible = true;          
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
