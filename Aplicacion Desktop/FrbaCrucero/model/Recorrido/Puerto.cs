@@ -11,12 +11,15 @@ namespace FrbaCrucero.model
         public Boolean activo = true;
         public String nombre;
 
-        public Puerto (String nombre){
+        public Puerto(String nombre)
+        {
             this.nombre = nombre;
-    }
-        
-        public void eliminar(){
+        }
+
+        public void eliminar()
+        {
             this.activo = false;
             /* Aca agregar la logica correspondiente de eliminar*/
         }
+    }
 }

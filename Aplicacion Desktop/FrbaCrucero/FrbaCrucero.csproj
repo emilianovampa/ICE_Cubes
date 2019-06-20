@@ -105,6 +105,24 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\Crucero\Cabina\Cabina.cs" />
+    <Compile Include="model\Crucero\Cabina\TipoCabina.cs" />
+    <Compile Include="model\Crucero\Estado\FueraServicio.cs" />
+    <Compile Include="model\Crucero\Estado\Jubilado.cs" />
+    <Compile Include="model\Crucero\TipoServicio.cs" />
+    <Compile Include="model\Crucero\Crucero.cs" />
+    <Compile Include="model\Crucero\Estado\Activo.cs" />
+    <Compile Include="model\Crucero\Estado\EstadoCrucero.cs" />
+    <Compile Include="model\Crucero\Marca.cs" />
+    <Compile Include="model\Cliente.cs" />
+    <Compile Include="model\Operacion\Compra.cs" />
+    <Compile Include="model\Operacion\Reserva.cs" />
+    <Compile Include="model\Operacion\tipoOperacion.cs" />
+    <Compile Include="model\Recorrido\Puerto.cs" />
+    <Compile Include="model\Recorrido\Recorrido.cs" />
+    <Compile Include="model\Recorrido\Tramo.cs" />
+    <Compile Include="model\Operacion\Vendedor.cs" />
+    <Compile Include="model\Viaje\Viaje.cs" />
     <Compile Include="PagoReserva\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

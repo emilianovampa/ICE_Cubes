@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrbaCrucero.model
+namespace FrbaCrucero.model.Operacion
 {
-    public interface EstadoCrucero
+    class Reserva
     {
-       void setearEstado();
     }
 }

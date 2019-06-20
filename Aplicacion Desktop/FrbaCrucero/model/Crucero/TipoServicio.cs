@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FrbaCrucero.model
 {
-    enum TipoServicio
+    public enum TipoServicio
     {
         [Description("Transporte de Mercaderias")] transporte,
         [Description("Turismo")] turismo,

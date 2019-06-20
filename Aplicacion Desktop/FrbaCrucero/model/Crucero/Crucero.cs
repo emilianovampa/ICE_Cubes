@@ -10,15 +10,20 @@ namespace FrbaCrucero.model
     {
         [System.ComponentModel.DisplayName("Identificador")]
         public Int32 identificador { get; set;}
-        [System.ComponentModel.DisplayName("Cabinas")]
+
+//        [System.ComponentModel.DisplayName("Cabinas")]
         public HashSet<Cabina> cabinas = new HashSet<Cabina>();
-        [System.ComponentModel.DisplayName("Estado")]
+
+//        [System.ComponentModel.DisplayName("Estado")]
         public EstadoCrucero estado;
+
         [System.ComponentModel.DisplayName("Fecha de Alta")]
         public Nullable<DateTime> fechaAlta { get; set;}
-        [System.ComponentModel.DisplayName("Marca")]
+
+//        [System.ComponentModel.DisplayName("Marca")]
         public Marca marca;
-        [System.ComponentModel.DisplayName("Tipo de Servicio")]
+
+//        [System.ComponentModel.DisplayName("Tipo de Servicio")]
         public TipoServicio servicio;
     }
 }
