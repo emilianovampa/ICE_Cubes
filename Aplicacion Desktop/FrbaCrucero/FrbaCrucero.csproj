@@ -68,18 +68,30 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu\Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\MenuController.cs" />
+    <Compile Include="ParametroStore.cs" />
+    <Compile Include="Conexion\Dictionary.cs" />
+    <Compile Include="Rol.cs" />
+    <Compile Include="usuario.cs" />
+    <Compile Include="Login\loginController.cs" />
     <Compile Include="CompraReservaPasaje\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CompraReservaPasaje\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Coneccion\ConeccionSQL.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Conexion\ConexionSQL.cs" />
+    <Compile Include="Login\loginView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Login\loginView.Designer.cs">
+      <DependentUpon>loginView.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneracionViaje\Form1.cs">
       <SubType>Form</SubType>
@@ -119,6 +131,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Login\loginView.resx">
+      <DependentUpon>loginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -127,6 +145,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -141,7 +160,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
