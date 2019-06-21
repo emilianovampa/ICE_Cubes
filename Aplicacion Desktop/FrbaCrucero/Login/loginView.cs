@@ -14,7 +14,6 @@ namespace FrbaCrucero
 {
     public partial class loginView : Form
     {
-        //usuario unUsuario = new usuario();
         loginController UnControllerLogin;
         public loginView()
         {

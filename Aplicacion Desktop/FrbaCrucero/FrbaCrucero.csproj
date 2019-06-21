@@ -68,17 +68,18 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu\Menu.cs">
+    <Compile Include="Menu\MenuCentral.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu\Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="Menu\MenuCentral.Designer.cs">
+      <DependentUpon>MenuCentral.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu\MenuController.cs" />
+    <Compile Include="model\Funcionalidad.cs" />
     <Compile Include="ParametroStore.cs" />
     <Compile Include="Conexion\Dictionary.cs" />
-    <Compile Include="Rol.cs" />
-    <Compile Include="usuario.cs" />
+    <Compile Include="model\Rol.cs" />
+    <Compile Include="model\usuario.cs" />
     <Compile Include="Login\loginController.cs" />
     <Compile Include="CompraReservaPasaje\Form1.cs">
       <SubType>Form</SubType>
@@ -105,24 +106,6 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\Crucero\Cabina\Cabina.cs" />
-    <Compile Include="model\Crucero\Cabina\TipoCabina.cs" />
-    <Compile Include="model\Crucero\Estado\FueraServicio.cs" />
-    <Compile Include="model\Crucero\Estado\Jubilado.cs" />
-    <Compile Include="model\Crucero\TipoServicio.cs" />
-    <Compile Include="model\Crucero\Crucero.cs" />
-    <Compile Include="model\Crucero\Estado\Activo.cs" />
-    <Compile Include="model\Crucero\Estado\EstadoCrucero.cs" />
-    <Compile Include="model\Crucero\Marca.cs" />
-    <Compile Include="model\Cliente.cs" />
-    <Compile Include="model\Operacion\Compra.cs" />
-    <Compile Include="model\Operacion\Reserva.cs" />
-    <Compile Include="model\Operacion\tipoOperacion.cs" />
-    <Compile Include="model\Recorrido\Puerto.cs" />
-    <Compile Include="model\Recorrido\Recorrido.cs" />
-    <Compile Include="model\Recorrido\Tramo.cs" />
-    <Compile Include="model\Operacion\Vendedor.cs" />
-    <Compile Include="model\Viaje\Viaje.cs" />
     <Compile Include="PagoReserva\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,8 +117,8 @@
     <EmbeddedResource Include="Login\loginView.resx">
       <DependentUpon>loginView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu\Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Menu\MenuCentral.resx">
+      <DependentUpon>MenuCentral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,9 +146,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

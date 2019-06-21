@@ -8,23 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaCrucero.PagoReserva
+namespace FrbaCrucero.Menu
 {
-    public partial class Menu : Form
+    public partial class MenuCentral : Form
     {
-        public Menu()
+        public MenuCentral()
         {
+            
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            new loginView().ShowDialog();
         }
     }
 }

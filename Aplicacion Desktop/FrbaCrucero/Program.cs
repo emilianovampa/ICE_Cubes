@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaCrucero.Menu;
 
 namespace FrbaCrucero
 {
@@ -17,7 +18,7 @@ namespace FrbaCrucero
             ConexionSQLS.iniciarConeccion(); //establesco la conexion por unica vez con la Base de datos.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new loginView());
+            Application.Run(new MenuCentral());
         }
     }
 }

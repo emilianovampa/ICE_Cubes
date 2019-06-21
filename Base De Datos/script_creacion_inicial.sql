@@ -530,4 +530,5 @@ declare @hash as varbinary(max) = HASHBYTES('SHA2_256', @password )
 		UPDATE ICE_CUBES.USUARIO SET USER_INTENTOS = 3 WHERE USERID = @usuario;
 	END
 END
-GO 
+GO
+

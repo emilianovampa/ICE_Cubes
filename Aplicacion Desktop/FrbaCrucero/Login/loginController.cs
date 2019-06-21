@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrbaCrucero.Menu;
 
 
 namespace FrbaCrucero
@@ -27,12 +28,25 @@ namespace FrbaCrucero
         }
 
         
-        public string Ingresar(string usuario, string pass)
+        public void Ingresar(string usuario, string pass)
         {
             usuario unUsuarioVista = new usuario(usuario, pass);
 
             MessageBox.Show(unUsuarioVista.logueate());
-            return(unUsuarioVista.logueate());
+            
+            if (unUsuarioVista.usuarioRol != null ) {
+
+                unaVistaLogin.Close();
+             
+
+
+                
+            }
+            
+
+            //return(unUsuarioVista.logueate());
+
+
         }
         
     }

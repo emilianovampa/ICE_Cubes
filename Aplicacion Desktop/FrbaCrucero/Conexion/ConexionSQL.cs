@@ -15,7 +15,8 @@ namespace FrbaCrucero
         private static SqlConnection Conexion;
 
         // Establece la configuración de la conección con la bd
-        static ConexionSQLS() {
+        static ConexionSQLS()
+        {
             Conexion = new SqlConnection();
             Conexion.ConnectionString =
             "Data Source=localhost\\SQLSERVER2012;" +
@@ -26,6 +27,12 @@ namespace FrbaCrucero
 
         // Retorna la instancia de SqlConnection
         public static SqlConnection getConeccion() {
+            Conexion = new SqlConnection();
+            Conexion.ConnectionString =
+            "Data Source=localhost\\SQLSERVER2012;" +
+            "Initial Catalog=GD1C2019;" +
+            "User ID=gdCruceros2019;" +
+            "Password=gd2019;";
             return Conexion;
         }
 
