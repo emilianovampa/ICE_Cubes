@@ -62,12 +62,6 @@
     <Compile Include="AbmRecorrido\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Menu\MenuCentral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,18 +75,25 @@
     <Compile Include="model\Rol.cs" />
     <Compile Include="model\usuario.cs" />
     <Compile Include="Login\loginController.cs" />
+    <Compile Include="AbmRol\AbmRolController.cs" />
     <Compile Include="CompraReservaPasaje\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CompraReservaPasaje\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conexion\ConexionSQL.cs" />
+    <Compile Include="Conexion\ConexionSQLS.cs" />
     <Compile Include="Login\loginView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login\loginView.Designer.cs">
       <DependentUpon>loginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\AltaRolView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\AltaRolView.Designer.cs">
+      <DependentUpon>AltaRolView.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneracionViaje\Form1.cs">
       <SubType>Form</SubType>
@@ -135,6 +136,9 @@
     <EmbeddedResource Include="Login\loginView.resx">
       <DependentUpon>loginView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AltaRolView.resx">
+      <DependentUpon>AltaRolView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuCentral.resx">
       <DependentUpon>MenuCentral.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,7 +170,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
