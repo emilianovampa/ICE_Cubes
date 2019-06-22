@@ -17,10 +17,8 @@ namespace FrbaCrucero.model
 
         public Reserva reserva;
         public Compra compra;
-        public Pago pago;
+        //public Pago pago;
 
-        public 
-
-
+        //public 
     }
 }
