@@ -755,11 +755,10 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
-Aplicacion Desktop/FrbaCrucero/FrbaCrucero.v11.suo
 *.cache
-*.cache
-*.csproj
 *.suo
-*.suo
-Aplicacion Desktop/FrbaCrucero/FrbaCrucero.v11.suo
+
+
 Aplicacion Desktop/FrbaCrucero/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.suo
+*.cache
