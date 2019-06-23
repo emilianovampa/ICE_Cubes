@@ -20,23 +20,27 @@ namespace FrbaCrucero
     public class loginController 
     {
         loginView unaVistaLogin;
+        usuario unUsuarioVista2 = new usuario();
 
 
         public loginController(loginView laVistaLogin)
         {
             unaVistaLogin = laVistaLogin;
+           
         }
 
-        
+
         public void Ingresar(string usuario, string pass)
         {
             usuario unUsuarioVista = new usuario(usuario, pass);
-
-            MessageBox.Show(unUsuarioVista.logueate());
+            unUsuarioVista2.nombreUsuario=usuario;
+            unUsuarioVista2.passUsuario = pass;
+            MessageBox.Show(unUsuarioVista2.logueate());
             
-            if (unUsuarioVista.usuarioRol != null ) {
+            if (unUsuarioVista2.usuarioRol != null ) {
 
                 unaVistaLogin.Close();
+                new MenuPpal(unUsuarioVista2).Show();
              
 
 

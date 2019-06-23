@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FrbaCrucero.model
 {
-    class Funcionalidad
+    public class Funcionalidad
     {
-        private decimal FUNCION_ID { get; set; }
-        private string FUNCION_NOMBRE{ get; set; }
+        public decimal FUNCION_ID { get; set; }
+        public string FUNCION_NOMBRE { get; set; }
 
         public Funcionalidad(decimal p1, string p2)
         {

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace FrbaCrucero
 {
-    class usuario
+   public class usuario
     {
         public string nombreUsuario {set ; get; }
         public string passUsuario { set; get; }
@@ -120,7 +120,12 @@ namespace FrbaCrucero
         //}
 
 
-        }
+
+        //public  getFuncionalidades()
+        //{
+        //    return this.usuarioRol.funcionalidades;
+        //}
+    }
 
     }
 //}

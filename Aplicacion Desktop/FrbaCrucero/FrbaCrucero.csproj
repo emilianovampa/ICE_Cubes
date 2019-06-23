@@ -68,11 +68,11 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu\MenuCentral.cs">
+    <Compile Include="Menu\MenuPpal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu\MenuCentral.Designer.cs">
-      <DependentUpon>MenuCentral.cs</DependentUpon>
+    <Compile Include="Menu\MenuPpal.Designer.cs">
+      <DependentUpon>MenuPpal.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu\MenuController.cs" />
     <Compile Include="model\Funcionalidad.cs" />
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="Login\loginView.resx">
       <DependentUpon>loginView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu\MenuCentral.resx">
-      <DependentUpon>MenuCentral.cs</DependentUpon>
+    <EmbeddedResource Include="Menu\MenuPpal.resx">
+      <DependentUpon>MenuPpal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
