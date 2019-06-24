@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaCrucero.AbmRecorrido
+namespace FrbaCrucero.AbmRecorrido.SeleccionarPuerto
 {
-    public partial class Form1 : Form
+    public partial class SeleccionarPuertoView : Form
     {
-        public Form1()
+        public SeleccionarPuertoView()
         {
             InitializeComponent();
         }
+
+        private void listaDePuertos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
     }
 }

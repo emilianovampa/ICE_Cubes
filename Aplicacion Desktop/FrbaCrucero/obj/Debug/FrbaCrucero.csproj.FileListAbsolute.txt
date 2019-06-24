@@ -18,3 +18,6 @@ d:\Users\evampa\OneDrive - CRESUD S.A.C.I.F.y A\GitHub\ICE_Cubes\Aplicacion Desk
 d:\Users\evampa\OneDrive - CRESUD S.A.C.I.F.y A\GitHub\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\obj\Debug\FrbaCrucero.Menu.MenuCentral.resources
 C:\Users\Luciano\Documents\UTN\Gestion Datos\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\obj\Debug\FrbaCrucero.loginView.resources
 C:\Users\Luciano\Documents\UTN\Gestion Datos\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\obj\Debug\FrbaCrucero.Menu.MenuCentral.resources
+C:\Users\Luciano\Documents\UTN\Gestion Datos\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\obj\Debug\FrbaCrucero.AbmRecorrido.RecorridoView.resources
+C:\Users\Luciano\Documents\UTN\Gestion Datos\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\obj\Debug\FrbaCrucero.AbmRecorrido.Tramo.TramoView.resources
+C:\Users\Luciano\Documents\UTN\Gestion Datos\ICE_Cubes\Aplicacion Desktop\FrbaCrucero\obj\Debug\FrbaCrucero.csprojResolveAssemblyReference.cache

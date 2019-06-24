@@ -9,16 +9,15 @@ namespace FrbaCrucero.model
 {
     class Viaje
     {
-        [System.ComponentModel.DisplayName("Fecha de Inicio")]
+//        [System.ComponentModel.DisplayName("Fecha de Inicio")]
         public Nullable<DateTime> fechaInicio ;
 
-        [System.ComponentModel.DisplayName("Fecha de Fin")]
-        public Nullable<DateTime> fechaFin ;
+       public Nullable<DateTime> fechaFin ;
 
-        [System.ComponentModel.DisplayName("Crucero")]
+//        [System.ComponentModel.DisplayName("Crucero")]
         public Crucero crucero;
 
-        [System.ComponentModel.DisplayName("Recorrido")]
+//        [System.ComponentModel.DisplayName("Recorrido")]
         public Recorrido recorrido;
 
         public Viaje(Crucero crucero, Recorrido recorrido, Nullable<DateTime> fechaInicio, Nullable<DateTime> fechaFin)
