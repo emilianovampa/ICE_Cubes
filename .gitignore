@@ -7,6 +7,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+Aplicacion Desktop/FrbaCrucero/bin
+Aplicacion Desktop/FrbaCrucero/obj/
+Aplicacion Desktop/FrbaCrucero/obj
+Aplicacion Desktop/FrbaCrucero/*.suo
+
 # User-specific files
 *.rsuser
 *.suo
@@ -759,3 +764,10 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+*.cache
+*.suo
+
+
+Aplicacion Desktop/FrbaCrucero/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.suo
+*.cache

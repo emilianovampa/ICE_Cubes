@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrbaCrucero.model{
+
+namespace FrbaCrucero.model
+{    
     class Recorrido
     {
         public HashSet<Tramo> tramos = new HashSet<Tramo> { };

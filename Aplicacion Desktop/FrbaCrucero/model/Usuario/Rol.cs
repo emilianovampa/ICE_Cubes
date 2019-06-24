@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FrbaCrucero
 {
-    class Rol
+    public class Rol
     {
         public decimal rolId { get; set; }
         public string rolDescripcion { get; set; }

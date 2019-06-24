@@ -11,7 +11,6 @@ namespace FrbaCrucero
     class ConexionSQLS
     {
         // La idea es que sea un Singleton, al menos por el momento
-
         private static SqlConnection Conexion;
 
         // Establece la configuración de la conección con la bd

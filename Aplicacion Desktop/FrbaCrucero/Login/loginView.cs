@@ -20,7 +20,7 @@ namespace FrbaCrucero
             InitializeComponent();
             UnControllerLogin = new loginController(this);
 
-            //Binding bindingTest = new Binding
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -30,7 +30,7 @@ namespace FrbaCrucero
 
         private void clienteboton_Click(object sender, EventArgs e)
         {
-
+            UnControllerLogin.Ingresar("cliente", "cliente");
         }
 
         private void usuarioTextB_TextChanged(object sender, EventArgs e)
