@@ -11,7 +11,7 @@ Aplicacion Desktop/FrbaCrucero/bin
 Aplicacion Desktop/FrbaCrucero/obj/
 Aplicacion Desktop/FrbaCrucero/obj
 Aplicacion Desktop/FrbaCrucero/*.suo
-
+*.csproj
 # User-specific files
 *.rsuser
 *.suo
