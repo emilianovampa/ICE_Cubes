@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -56,13 +56,16 @@
     <Compile Include="AbmPuerto\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRecorrido\ControllerRecorrido.cs" />
-    <Compile Include="AbmRecorrido\EditarRecorrido\RecorridoView.cs">
+    <Compile Include="AbmRecorrido\listarRecorridosController.cs" />
+    <Compile Include="AbmRecorrido\Recorrido\RecorridoController.cs" />
+    <Compile Include="AbmRecorrido\Recorrido\RecorridoView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRecorrido\EditarRecorrido\RecorridoView.Designer.cs">
+    <Compile Include="AbmRecorrido\Recorrido\RecorridoView.Designer.cs">
       <DependentUpon>RecorridoView.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRecorrido\Recorrido\SeleccionadorRecorrido.cs" />
+    <Compile Include="AbmRecorrido\SeleccionarPuerto\SeleccionadorDePuerto.cs" />
     <Compile Include="AbmRecorrido\SeleccionarPuerto\SeleccionarPuertoController.cs" />
     <Compile Include="AbmRecorrido\SeleccionarPuerto\SeleccionarPuertoView.cs">
       <SubType>Form</SubType>
@@ -77,13 +80,13 @@
     <Compile Include="AbmRecorrido\Tramo\TramoView.Designer.cs">
       <DependentUpon>TramoView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRecorrido\ViewRecorrido.cs">
+    <Compile Include="AbmRecorrido\listarRecorridosView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRecorrido\ViewRecorrido.Designer.cs">
-      <DependentUpon>ViewRecorrido.cs</DependentUpon>
+    <Compile Include="AbmRecorrido\listarRecorridosView.Designer.cs">
+      <DependentUpon>listarRecorridosView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\RolController.cs" />
+    <Compile Include="AbmRol\AbmRolController.cs" />
     <Compile Include="AbmRol\AltaRolView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,7 +156,7 @@
     <Compile Include="ParametroStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AbmRecorrido\EditarRecorrido\RecorridoView.resx">
+    <EmbeddedResource Include="AbmRecorrido\Recorrido\RecorridoView.resx">
       <DependentUpon>RecorridoView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRecorrido\SeleccionarPuerto\SeleccionarPuertoView.resx">
@@ -162,8 +165,8 @@
     <EmbeddedResource Include="AbmRecorrido\Tramo\TramoView.resx">
       <DependentUpon>TramoView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRecorrido\ViewRecorrido.resx">
-      <DependentUpon>ViewRecorrido.cs</DependentUpon>
+    <EmbeddedResource Include="AbmRecorrido\listarRecorridosView.resx">
+      <DependentUpon>listarRecorridosView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRolView.resx">
       <DependentUpon>AltaRolView.cs</DependentUpon>
