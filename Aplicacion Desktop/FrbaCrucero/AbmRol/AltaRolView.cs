@@ -14,47 +14,60 @@ namespace FrbaCrucero.AbmRol
     public partial class AltaRolView : Form
     {
         // Atributos
-        AbmRolController unABMRolController;
-        private bool flagNombre = true;             // Agrego flags para validar
-        private bool flagFuncionalidades = true;    // nombre y funcionalidades en la vista
+        private RolController unRolController;
+        private bool flagDescripcion;
+        private bool flagFuncionalidad;
 
         public AltaRolView()
         {
             InitializeComponent();
-            unABMRolController = new AbmRolController(this);
+            unRolController = new RolController(this);
+            unRolController.cargarFuncionalidades();
         }
 
-        private void validarNombre() {
-            Regex exp = new Regex(@"\A[a-zA-Z]{3,20}\Z");
+        private void validarRolDescripcion() {
+            flagDescripcion = true;
+            Regex exp = new Regex(@"\A[a-zA-Z][a-zA-Z0-9]{2,19}\Z");
             if (!exp.IsMatch(txtbox_nombre.Text))
             {
-                flagNombre = false;
+                flagDescripcion = false;
                 MessageBox.Show("El campo Nombre debe contener entre 3 y 20 caracteres.");
             }
         }
 
-        private void validarFuncionalidades() { 
-           // Completar
-            foreach (CheckBox checkBox in groupBoxFuncionalidades.Controls)
+        private void validarFuncionalidad()
+        {
+            flagFuncionalidad = true;
+            if (comboBox_funcionalidades.SelectedIndex.Equals(-1))
             {
-                if(checkBox.Checked)
-                {
-                    
-                }
+                flagFuncionalidad = false;
+                MessageBox.Show("Seleccione una funcionalidad.");
             }
-
         }
 
-        private void btn_agregar_Click(object sender, EventArgs e)
+        // Evento
+        private void btn_guardar_Click(object sender, EventArgs e)
         {
-            validarNombre();
-            validarFuncionalidades();
-
-            if (flagNombre && flagFuncionalidades)
+            validarRolDescripcion();
+            validarFuncionalidad();
+        
+            if (flagDescripcion && flagFuncionalidad)
             {
-                // Los campos nombre y funcionalidades fueron completados correctamente
-                
+                // el nombre del rol y la funcionalidad pasaron las validaciones de la vista
+                unRolController.darDeAlta(txtbox_nombre.Text,comboBox_funcionalidades.SelectedItem.ToString());
             }
+        }
+
+        // Evento
+        private void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            txtbox_nombre.Text = "";
+            comboBox_funcionalidades.SelectedIndex = -1;
+        }
+
+        public void agregarFuncionalidad(string nombreFuncionalidad)
+        {
+            comboBox_funcionalidades.Items.Add(nombreFuncionalidad);
         }
 
         public void mostrarMensaje(String mensaje)
