@@ -135,6 +135,7 @@ namespace FrbaCrucero{
             recorrido.setTramos(tramos.ToList<Tramo>());
             recorrido.id = recorrido.guardarRecorrido();
             vista.setNroRecorrido(recorrido.id.ToString(), recorrido.getEstado());
+            vista.eliminarOnOff(recorrido.getEstado());
         }
     }
 }

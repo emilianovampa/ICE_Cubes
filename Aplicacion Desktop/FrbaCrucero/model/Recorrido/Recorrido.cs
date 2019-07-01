@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 
 namespace FrbaCrucero.model
-{    
+{
     public class Recorrido
     {
         public int id;
@@ -55,7 +55,8 @@ namespace FrbaCrucero.model
         public Boolean pasaPor(Puerto puerto)
         {
             Boolean pasaPorAhi = false;
-            foreach(Tramo tramo in tramos){
+            foreach (Tramo tramo in tramos)
+            {
                 pasaPorAhi = pasaPorAhi || tramo.pasaPor(puerto);
             }
             return pasaPorAhi;
@@ -63,40 +64,111 @@ namespace FrbaCrucero.model
 
         public int guardarRecorrido()
         {
-            SqlConnection conexion = ConexionSQLS.getConeccion();
-            try
+            if (id == 0)
             {
-                if (id == 0)
+                id = calcularID();
+                if (id != 0)
                 {
-                    SqlCommand consulta = new SqlCommand("SELECT MAX(RECO_ID) FROM ICE_CUBES.RECORRIDO", conexion);
-                    conexion.Open();
-                    SqlDataReader reco_id_max = consulta.ExecuteReader();
-                    id = reco_id_max.GetFieldValue<int>(0) + 1;
+                    insertarRecorrido();
+                    insertarTramos();
                 }
                 else
                 {
-                    SqlCommand delete = new SqlCommand("DELETE FROM ICE_CUBES.TRAMOS WHERE RECO_ID = '" + id.ToString() + "'", conexion);
-                    delete.ExecuteNonQuery();
+                    return id;
                 }
-                SqlCommand insertReco = new SqlCommand("INSERT INTO ICE_CUBES.RECORRIDO(RECO_ID,RECO_ESTADO) VALUES ('"+ id.ToString() + ", '1');", conexion);
+            }
+            else
+            {
+                eliminarTramosActuales();
+                insertarTramos();
+            }
+            
+            return id;
+        }
+
+        public int calcularID()
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                SqlCommand consulta = new SqlCommand("SELECT MAX(RECO_ID) AS MAXIMO FROM ICE_CUBES.RECORRIDO", conexion);
+                conexion.Open();
+                SqlDataReader reco_id_max = consulta.ExecuteReader();
+                reco_id_max.Read();
+                id = reco_id_max.GetFieldValue<int>(0) + 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return id;
+        }
+
+        public void eliminarTramosActuales()
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                conexion.Open();
+                SqlCommand delete = new SqlCommand("DELETE FROM ICE_CUBES.TRAMO WHERE TRAMO_RECO_ID = '" + id.ToString() + "'", conexion);
+                delete.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        public void insertarRecorrido()
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                conexion.Open();
+                SqlCommand insertReco = new SqlCommand("INSERT INTO ICE_CUBES.RECORRIDO(RECO_ID,RECO_ESTADO) VALUES ('" + id.ToString() + "', '1');", conexion);
                 insertReco.ExecuteNonQuery();
-                String insert = "INSERT INTO ICE_CUBES.TRAMOS(TRAMO_RECO_ID, TRAMO_NIVEL, TRAMO_ORIGEN, TRAMO_DESTINO) VALUES ";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        public void insertarTramos()
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                conexion.Open();
+                String insert = "INSERT INTO ICE_CUBES.TRAMO(TRAMO_RECO_ID, TRAMO_NIVEL, TRAMO_ORIGEN, TRAMO_DESTINO, TRAMO_PRECIO) VALUES ";
                 int i = 0;
-                foreach(Tramo tramo in tramos)
+                foreach (Tramo tramo in tramos)
                 {
-                    if(i++ == 0)
+                    if (i++ == 0)
                     {
-                        insert = insert + "( '" ;
+                        insert = insert + "( '";
                     }
                     else
                     {
-                        insert = insert + ", ( '" ;
+                        insert = insert + ", ( '";
                     }
-                    insert = insert + id.ToString()+ "', '"
-                                                + tramo.nivel.ToString() +  "', '"
-                                                + tramo.origen.idPuerto.ToString() + "', '"
-                                                + tramo.destino.idPuerto.ToString() + "')"; 
-                                       
+                    insert = insert + id.ToString() + "', '"
+                                    + tramo.nivel.ToString() + "', '"
+                                    + tramo.origen.idPuerto.ToString() + "', '"
+                                    + tramo.destino.idPuerto.ToString() + "', '"
+                                    + tramo.precio.ToString() + "')";
+
                 }
                 SqlCommand insertTramo = new SqlCommand(insert, conexion);
                 insertTramo.ExecuteNonQuery();
@@ -108,9 +180,8 @@ namespace FrbaCrucero.model
             finally
             {
                 conexion.Close();
-
             }
-            return id;
-         }
+        }
+
     }
 }
