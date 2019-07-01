@@ -3,19 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FrbaCrucero;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrbaCrucero.model
 {
-    class Puerto
+    public class Puerto
     {
-        public Boolean activo = true;
-        public String nombre;
-
-        public Puerto(String nombre)
+        public override string ToString()
         {
-            this.nombre = nombre;
+            return nombre.ToString();
         }
-
+        [System.ComponentModel.DisplayName("Identificador")]
+        public decimal idPuerto { get; set; }
+        [System.ComponentModel.DisplayName("Nombre")]
+        public String nombre { get; set; }
+        public Boolean activo;
+        public Puerto(int id, String nombre, Boolean estado)
+        {
+            this.idPuerto = id;
+            this.nombre = nombre;
+            this.activo = estado;
+        }
+        public static List<Puerto> getPuertosActivos(String nombreAFiltrar)
+        {
+            List<Puerto> listadoDePuertos = new List<Puerto>();
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {   
+                String select = "SELECT PUERTO_ID, PUERTO_NOMBRE, PUERTO_ESTADO " 
+                              + "FROM ICE_CUBES.PUERTO WHERE PUERTO_ESTADO = 1"
+                              + " AND PUERTO_NOMBRE LIKE '%" + nombreAFiltrar.ToString() + "%'"
+                              + " ORDER BY 2";
+                
+                SqlCommand consulta = new SqlCommand(select.ToString(), conexion);
+                conexion.Open();
+                SqlDataReader puertos = consulta.ExecuteReader();
+                while (puertos.Read())
+                {
+                    listadoDePuertos.Add(new Puerto(puertos.GetFieldValue<int>(0),
+                                                    puertos.GetString(1),
+                                                    puertos.GetBoolean(2)));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return listadoDePuertos;
+        }
         public void eliminar()
         {
             this.activo = false;

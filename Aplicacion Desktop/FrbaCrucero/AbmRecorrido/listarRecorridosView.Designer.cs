@@ -1,6 +1,6 @@
-﻿namespace FrbaCrucero.AbmRecorrido
+﻿namespace FrbaCrucero
 {
-    partial class RecorridoView
+    partial class listarRecorridosView
     {
         /// <summary>
         /// Required designer variable.

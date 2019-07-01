@@ -6,17 +6,27 @@ using System.Threading.Tasks;
 
 namespace FrbaCrucero.model
 {
-    class Tramo
+    public class Tramo
     {
-        public Tramo(Puerto origen, Puerto destino, double precio)
+        public Tramo(int nivel,Puerto origen, Puerto destino, double precio)
         {
+            this.nivel = nivel;
             this.origen = origen;
             this.destino = destino;
             this.precio = precio;
         }
-
-        public double precio { get; set; }
+        [System.ComponentModel.DisplayName("Nivel")]
+        public int nivel { get; set; }
+        [System.ComponentModel.DisplayName("Origen")]
         public Puerto origen { get; set; }
+        [System.ComponentModel.DisplayName("Destino")]
         public Puerto destino { get; set; }
+        [System.ComponentModel.DisplayName("Precio")]
+        public double precio { get; set; }
+
+        public Boolean pasaPor(Puerto puerto)
+        {
+            return (origen.idPuerto.Equals(puerto.idPuerto) || destino.idPuerto.Equals(puerto.idPuerto));
+        }
     }     
 }

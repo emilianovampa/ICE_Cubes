@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace FrbaCrucero.AbmRecorrido
+namespace FrbaCrucero
 {
-    class ControllerRecorrido
+    public interface SeleccionadorRecorrido
     {
     }
 }

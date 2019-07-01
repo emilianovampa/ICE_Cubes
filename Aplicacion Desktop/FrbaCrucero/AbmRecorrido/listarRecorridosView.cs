@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaCrucero.AbmRecorrido
+namespace FrbaCrucero
 {
-    public partial class ViewRecorrido : Form
+    public partial class listarRecorridosView : Form
     {
-        public ViewRecorrido()
+        public listarRecorridosView()
         {
             InitializeComponent();
         }
