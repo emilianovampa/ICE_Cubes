@@ -569,16 +569,6 @@ END
 GO
 
 
-/* TEST
-declare  @resultado int
-
-//exec ICE_CUBES.SP_INGRESAR_USUARIO 'admin','w23e', @resultado output;
-
-print @resultado 
-GO
-*/
-
-=======
 /*************** Hasta acá va el entregable ***************/
 
 -- Prueba SP_INGRESAR_USUARIO con user: admin y pass: w23e --
