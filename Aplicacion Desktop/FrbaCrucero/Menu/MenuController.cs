@@ -28,7 +28,7 @@ namespace FrbaCrucero.Menu
 
         internal bool soyVisible(int p)
         {
-           return unUsuarioCentral.usuarioRol.funcionalidades.Exists(X => X.FUNCION_ID == p);
+           return unUsuarioCentral.usuarioRol.Funcionalidades.Exists(X => X.IdFuncion == p);
         }
     }
 }

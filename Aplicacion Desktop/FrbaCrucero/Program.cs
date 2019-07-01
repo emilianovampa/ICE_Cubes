@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaCrucero.Menu;
+//using FrbaCrucero.AbmRol;
 
 namespace FrbaCrucero
 {
@@ -20,6 +21,7 @@ namespace FrbaCrucero
             Application.SetCompatibleTextRenderingDefault(false);
             new loginView().ShowDialog();
             Application.Run();
+            //new AltaRolView().ShowDialog();
         }
     }
 }
