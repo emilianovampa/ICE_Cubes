@@ -26,7 +26,6 @@ namespace FrbaCrucero
         public loginController(loginView laVistaLogin)
         {
             unaVistaLogin = laVistaLogin;
-           
         }
 
 
@@ -41,15 +40,7 @@ namespace FrbaCrucero
 
                 unaVistaLogin.Close();
                 new MenuPpal(unUsuarioVista2).Show();
-             
-
-
-                
             }
-            
-
-            //return(unUsuarioVista.logueate());
-
 
         }
         

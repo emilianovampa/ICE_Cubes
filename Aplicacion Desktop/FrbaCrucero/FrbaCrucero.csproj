@@ -86,6 +86,12 @@
     <Compile Include="AbmRecorrido\listarRecorridosView.Designer.cs">
       <DependentUpon>listarRecorridosView.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\AbmRolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\AbmRolForm.Designer.cs">
+      <DependentUpon>AbmRolForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\AltaRolView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRecorrido\listarRecorridosView.resx">
       <DependentUpon>listarRecorridosView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AbmRolForm.resx">
+      <DependentUpon>AbmRolForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRolView.resx">
       <DependentUpon>AltaRolView.cs</DependentUpon>

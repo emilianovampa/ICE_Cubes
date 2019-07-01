@@ -52,25 +52,19 @@ namespace FrbaCrucero
 
             if (!String.IsNullOrWhiteSpace(usuarioTextB.Text) && !String.IsNullOrWhiteSpace(passTextB.Text))
             {
-            
-             UnControllerLogin.Ingresar(this.usuarioTextB.Text, this.passTextB.Text);
-                       
-                
-
+                UnControllerLogin.Ingresar(this.usuarioTextB.Text, this.passTextB.Text);   
             }
-
-            else{
+            else
+            {
                 MessageBox.Show("Ingrese Datos de Login");
             }
-
-
-
 
         }
 
         private void cancelarBoton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Application.Exit();
         }
 
         private void habilitarOpcionesVendedor () {

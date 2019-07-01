@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbaCrucero.AbmRol;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +31,7 @@ namespace FrbaCrucero.Menu
             this.button1.Visible = menuCentralController.soyVisible(1);
             this.button2.Visible = menuCentralController.soyVisible(2);
             this.button3.Visible = menuCentralController.soyVisible(3);
-            this.button4.Visible = menuCentralController.soyVisible(4);
+            this.btn_abmRol.Visible = menuCentralController.soyVisible(4);
             this.button5.Visible = menuCentralController.soyVisible(5);
             this.button6.Visible = menuCentralController.soyVisible(6);
             this.button7.Visible = menuCentralController.soyVisible(7);
@@ -47,6 +48,17 @@ namespace FrbaCrucero.Menu
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
+        }
+
+        private void btn_abmRol_Click(object sender, EventArgs e)
+        {
+            new AbmRolForm().ShowDialog();
         }
     }
 }
