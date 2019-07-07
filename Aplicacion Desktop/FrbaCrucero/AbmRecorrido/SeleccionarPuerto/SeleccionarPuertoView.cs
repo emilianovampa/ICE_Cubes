@@ -41,6 +41,16 @@ namespace FrbaCrucero
           }
         }
 
+        private void Limpiar_Click(object sender, EventArgs e)
+        {
+            nombreSelectedText.Text = "";
+            idSelectedText.Text = "";
+            textNombrePuerto.Text = "";
+            this.listaDePuertos.DataSource = controller.getPuertosActivos("");
+        }
+
+
+
 
 
 

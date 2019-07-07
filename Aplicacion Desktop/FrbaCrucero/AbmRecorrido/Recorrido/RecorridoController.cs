@@ -12,13 +12,11 @@ namespace FrbaCrucero{
     public class RecorridoController
     {
         private RecorridoView vista;
-        private SeleccionadorRecorrido caller;
         private Recorrido recorrido;
         private BindingList<Tramo> tramos;
-        public RecorridoController(RecorridoView vista, SeleccionadorRecorrido caller, Recorrido recorrido)
+        public RecorridoController(RecorridoView vista, Recorrido recorrido)
         {
             this.vista = vista;
-            this.caller = caller;
             this.recorrido = recorrido;
         }
 
@@ -55,6 +53,8 @@ namespace FrbaCrucero{
         {
             recorrido.eliminarRecorrido();
             vista.eliminarOnOff(false);
+            vista.estadoCampos(recorrido.getEstado());
+            vista.setNroRecorrido(recorrido.id.ToString(), recorrido.getEstado());
         }
 
         internal void edit(int p)

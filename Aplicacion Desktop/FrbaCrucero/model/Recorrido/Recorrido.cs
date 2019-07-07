@@ -22,10 +22,94 @@ namespace FrbaCrucero.model
             this.estado = estado;
         }
 
+        public static List<Recorrido> listarRecorridos()
+        {
+            List<Recorrido> recorridos = new List<Recorrido>();
+            String select_string = "SELECT r.RECO_ID, r.RECO_ESTADO, t.TRAMO_NIVEL,"
+                           + "t.TRAMO_ORIGEN, po.PUERTO_NOMBRE, po.PUERTO_ESTADO,"
+                           + "t.TRAMO_DESTINO, pd.PUERTO_NOMBRE, pd.PUERTO_ESTADO," 
+                           + "t.TRAMO_PRECIO"
+                           + " FROM ice_cubes.RECORRIDO r JOIN ice_cubes.TRAMO t ON r.RECO_ID = t.TRAMO_RECO_ID"
+                           + " LEFT JOIN ice_cubes.PUERTO po ON t.TRAMO_ORIGEN = po.PUERTO_ID"
+                           + " LEFT JOIN ice_cubes.PUERTO pd ON t.TRAMO_DESTINO = pd.PUERTO_ID"
+                           + " ORDER BY 1, 3;";
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                List<Tramo> tramos = new List<Tramo>();
+                SqlCommand select = new SqlCommand(select_string, conexion);
+                conexion.Open();
+                SqlDataReader sql_recorridos = select.ExecuteReader();
+                sql_recorridos.Read();
+                int id_actual = sql_recorridos.GetFieldValue<int>(0);
+                do
+                {
+                    if (id_actual == sql_recorridos.GetFieldValue<int>(0))
+                    {
+                        tramos.Add(new Tramo(//NIVEL
+                                             sql_recorridos.GetFieldValue<int>(2), 
+                                             // PUERTO ORIGEN
+                                             new Puerto(sql_recorridos.GetFieldValue<int>(3), 
+                                                        sql_recorridos.GetString(4),
+                                                        sql_recorridos.GetBoolean(5)),
+                                            // PUERTO DESTINO
+                                             new Puerto(sql_recorridos.GetFieldValue<int>(6),
+                                                        sql_recorridos.GetString(7),
+                                                        sql_recorridos.GetBoolean(8)),
+                                            // PRECIO
+                                             sql_recorridos.GetDecimal(9)));
+                    }
+                    else
+                    {
+                        recorridos.Add(new Recorrido(id_actual, tramos, sql_recorridos.GetBoolean(1)));
+                        tramos = new List<Tramo>();
+                        id_actual = sql_recorridos.GetFieldValue<int>(0);
+                        tramos.Add(new Tramo(//NIVEL
+                                             sql_recorridos.GetFieldValue<int>(2), 
+                                             // PUERTO ORIGEN
+                                             new Puerto(sql_recorridos.GetFieldValue<int>(3), 
+                                                        sql_recorridos.GetString(4),
+                                                        sql_recorridos.GetBoolean(5)),
+                                            // PUERTO DESTINO
+                                             new Puerto(sql_recorridos.GetFieldValue<int>(6),
+                                                        sql_recorridos.GetString(7),
+                                                        sql_recorridos.GetBoolean(8)),
+                                            // PRECIO
+                                             sql_recorridos.GetDecimal(9)));
+                    }
+                } while (sql_recorridos.Read());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return recorridos;
+        }
         public void eliminarRecorrido()
         {
-            estado = false;
             /* Agregar todo lo que sucede cuando se elimina un recorrido*/
+
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                conexion.Open();
+                SqlCommand delete = new SqlCommand("UPDATE ICE_CUBES.RECORRIDO SET RECO_ESTADO = '0' WHERE RECO_ID = '" + id.ToString() + "';", conexion);
+                delete.ExecuteNonQuery();
+                estado = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
         }
 
         public List<Tramo> getTramos()
@@ -114,7 +198,7 @@ namespace FrbaCrucero.model
             try
             {
                 conexion.Open();
-                SqlCommand delete = new SqlCommand("DELETE FROM ICE_CUBES.TRAMO WHERE TRAMO_RECO_ID = '" + id.ToString() + "'", conexion);
+                SqlCommand delete = new SqlCommand("DELETE FROM ICE_CUBES.TRAMO WHERE RECO_ID = '" + id.ToString() + "'", conexion);
                 delete.ExecuteNonQuery();
             }
             catch (Exception ex)

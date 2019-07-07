@@ -16,10 +16,10 @@ namespace FrbaCrucero
     {
         public RecorridoController controller;
         
-        public RecorridoView(SeleccionadorRecorrido caller, Recorrido recorrido)
+        public RecorridoView(Recorrido recorrido)
         {
             InitializeComponent();
-            controller = new RecorridoController(this, caller, recorrido);
+            controller = new RecorridoController(this, recorrido);
             controller.setearDatosIniciales();
             //Agregar que se llame si el usuario tiene accesos para ReadOnly.
             //readOnly();

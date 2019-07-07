@@ -72,8 +72,8 @@ namespace FrbaCrucero
 
         public void setPrecio()
         {
-            double p;
-            if (double.TryParse(vista.getPrecio(), out p))
+            decimal p;
+            if (decimal.TryParse(vista.getPrecio(), out p))
             {
                 tramo.precio = p;
             }
