@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -153,12 +154,13 @@
     <Compile Include="model\Usuario\Rol.cs" />
     <Compile Include="model\Usuario\usuario.cs" />
     <Compile Include="model\Viaje\Viaje.cs" />
-    <Compile Include="PagoReserva\Form1.cs">
+    <Compile Include="PagoReserva\BusquedaReservaVista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PagoReserva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PagoReserva\BusquedaReservaVista.Designer.cs">
+      <DependentUpon>BusquedaReservaVista.cs</DependentUpon>
     </Compile>
+    <Compile Include="PagoReserva\BusquedaReservaCtrl.cs" />
     <Compile Include="ParametroStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +188,9 @@
     <EmbeddedResource Include="Menu\MenuPpal.resx">
       <DependentUpon>MenuPpal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PagoReserva\BusquedaReservaVista.resx">
+      <DependentUpon>BusquedaReservaVista.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -195,6 +200,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FrbaCrucero.model.Operacion.Reserva.datasource" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

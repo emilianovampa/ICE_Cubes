@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace FrbaCrucero
 {
@@ -17,21 +18,13 @@ namespace FrbaCrucero
         static ConexionSQLS()
         {
             Conexion = new SqlConnection();
-            Conexion.ConnectionString =
-            "Data Source=localhost\\SQLSERVER2012;" +
-            "Initial Catalog=GD1C2019;" +
-            "User ID=gdCruceros2019;" +
-            "Password=gd2019;";
+            Conexion.ConnectionString = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString; ;
         }
 
         // Retorna la instancia de SqlConnection
         public static SqlConnection getConeccion() {
             Conexion = new SqlConnection();
-            Conexion.ConnectionString =
-            "Data Source=localhost\\SQLSERVER2012;" +
-            "Initial Catalog=GD1C2019;" +
-            "User ID=gdCruceros2019;" +
-            "Password=gd2019;";
+            Conexion.ConnectionString = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
             return Conexion;
         }
 
