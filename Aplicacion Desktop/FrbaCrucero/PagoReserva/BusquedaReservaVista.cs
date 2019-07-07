@@ -32,7 +32,6 @@ namespace FrbaCrucero.PagoReserva
              if (!String.IsNullOrWhiteSpace(NroReservaTextBox.Text))
              {
                  dataGridView1.DataSource = unControlerReserva.getReserva(NroReservaTextBox.Text);
-                 dataGridView1.AutoGenerateColumns = true;
                  }
 
         }

@@ -45,7 +45,7 @@ namespace FrbaCrucero.PagoReserva
 
         public BindingSource getReserva(string numeroReserva)
         {
-            var Reservas = new BindingList<Reserva>(Reserva.getReservas(numeroReserva));
+            BindingList<Reserva> Reservas = new BindingList<Reserva>(Reserva.getReservas(numeroReserva));
             return new BindingSource(Reservas, null);
         }
     }
