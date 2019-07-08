@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaCrucero.PagoReserva;
+using FrbaCrucero.CompraPasaje;
 
 namespace FrbaCrucero.Menu
 {
@@ -48,7 +49,7 @@ namespace FrbaCrucero.Menu
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            new ComprarPasajeVista().ShowDialog();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -65,6 +66,11 @@ namespace FrbaCrucero.Menu
         private void button2_Click(object sender, EventArgs e)
         {
             new BusquedaReservaVista().ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //new RecorridoView().ShowDialog();
         }
     }
 }
