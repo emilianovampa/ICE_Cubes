@@ -22,6 +22,8 @@ namespace FrbaCrucero
             this.listaDePuertos.DataSource = controller.getPuertosActivos("");
         }
 
+
+
         private void Buscar_Click(object sender, EventArgs e)
         {
             this.listaDePuertos.DataSource = controller.getPuertosActivos(this.textNombrePuerto.Text);

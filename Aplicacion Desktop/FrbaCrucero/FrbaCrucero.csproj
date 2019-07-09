@@ -93,11 +93,18 @@
       <DependentUpon>AltaRolView.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\RolController.cs" />
-    <Compile Include="CompraReservaPasaje\Form1.cs">
+    <Compile Include="CompraReservaPasaje\ComprarPasajeController.cs" />
+    <Compile Include="CompraReservaPasaje\CompraPasajeVista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CompraReservaPasaje\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CompraReservaPasaje\CompraPasajeVista.Designer.cs">
+      <DependentUpon>CompraPasajeVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\PagoVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\PagoVista.Designer.cs">
+      <DependentUpon>PagoVista.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion\ConexionSQLS.cs" />
     <Compile Include="Conexion\Dictionary.cs" />
@@ -183,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GeneracionViaje\ListadoRecorridos\ListadoRecorridosView.resx">
       <DependentUpon>ListadoRecorridosView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompraReservaPasaje\CompraPasajeVista.resx">
+      <DependentUpon>CompraPasajeVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompraReservaPasaje\PagoVista.resx">
+      <DependentUpon>PagoVista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\loginView.resx">
       <DependentUpon>loginView.cs</DependentUpon>
