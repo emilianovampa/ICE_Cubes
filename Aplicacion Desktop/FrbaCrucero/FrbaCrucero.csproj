@@ -57,7 +57,6 @@
     <Compile Include="AbmPuerto\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRecorrido\listarRecorridosController.cs" />
     <Compile Include="AbmRecorrido\Recorrido\RecorridoController.cs" />
     <Compile Include="AbmRecorrido\Recorrido\RecorridoView.cs">
       <SubType>Form</SubType>
@@ -80,12 +79,6 @@
     </Compile>
     <Compile Include="AbmRecorrido\Tramo\TramoView.Designer.cs">
       <DependentUpon>TramoView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AbmRecorrido\listarRecorridosView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRecorrido\listarRecorridosView.Designer.cs">
-      <DependentUpon>listarRecorridosView.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\AbmRolForm.cs">
       <SubType>Form</SubType>
@@ -114,6 +107,15 @@
     <Compile Include="GeneracionViaje\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GeneracionViaje\ListadoRecorridos\ListadoRecorridoController.cs" />
+    <Compile Include="GeneracionViaje\ListadoRecorridos\ListadoRecorridosView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneracionViaje\ListadoRecorridos\ListadoRecorridosView.Designer.cs">
+      <DependentUpon>ListadoRecorridosView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneracionViaje\Viaje\ViajeController.cs" />
+    <Compile Include="model\ModoInteraccion.cs" />
     <Compile Include="ListadoEstadistico\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,7 +154,7 @@
     <Compile Include="model\Recorrido\Tramo.cs" />
     <Compile Include="model\Usuario\Funcionalidad.cs" />
     <Compile Include="model\Usuario\Rol.cs" />
-    <Compile Include="model\Usuario\usuario.cs" />
+    <Compile Include="model\Usuario\Usuario.cs" />
     <Compile Include="model\Viaje\Viaje.cs" />
     <Compile Include="PagoReserva\BusquedaReservaVista.cs">
       <SubType>Form</SubType>
@@ -173,14 +175,14 @@
     <EmbeddedResource Include="AbmRecorrido\Tramo\TramoView.resx">
       <DependentUpon>TramoView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmRecorrido\listarRecorridosView.resx">
-      <DependentUpon>listarRecorridosView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AbmRolForm.resx">
       <DependentUpon>AbmRolForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRolView.resx">
       <DependentUpon>AltaRolView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneracionViaje\ListadoRecorridos\ListadoRecorridosView.resx">
+      <DependentUpon>ListadoRecorridosView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\loginView.resx">
       <DependentUpon>loginView.cs</DependentUpon>

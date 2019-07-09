@@ -16,13 +16,15 @@ namespace FrbaCrucero
     {
         public RecorridoController controller;
         
-        public RecorridoView(SeleccionadorRecorrido caller, Recorrido recorrido)
+        public RecorridoView(Recorrido recorrido, ModoInteraccion modo)
         {
             InitializeComponent();
-            controller = new RecorridoController(this, caller, recorrido);
+            controller = new RecorridoController(this, recorrido);
             controller.setearDatosIniciales();
-            //Agregar que se llame si el usuario tiene accesos para ReadOnly.
-            //readOnly();
+            if(modo.Equals(ModoInteraccion.VISUALIZAR))
+            {
+                readOnly();
+            }   
         }
 
         public void setNroRecorrido(String nro, Boolean estado)
@@ -60,8 +62,6 @@ namespace FrbaCrucero
             this.gridTramos.Columns[0].Visible = activado;
             this.gridTramos.Columns[1].Visible = activado;
         }
-
-
 
         public void readOnly()
         {

@@ -26,6 +26,30 @@ namespace FrbaCrucero.model
             this.nombre = nombre;
             this.activo = estado;
         }
+
+        public Puerto(int id)
+        {
+            this.idPuerto = id;
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                SqlCommand select = new SqlCommand("SELECT [PUERTO_ID],[PUERTO_NOMBRE],[PUERTO_ESTADO] FROM ice_cubes.PUERTO WHERE PUERTO_ID = '" + id.ToString() + "'", conexion);
+                conexion.Open();
+                SqlDataReader sql_puerto = select.ExecuteReader();
+                sql_puerto.Read();
+                this.nombre = sql_puerto.GetString(1);
+                this.activo = sql_puerto.GetBoolean(2);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
         public static List<Puerto> getPuertosActivos(String nombreAFiltrar)
         {
             List<Puerto> listadoDePuertos = new List<Puerto>();

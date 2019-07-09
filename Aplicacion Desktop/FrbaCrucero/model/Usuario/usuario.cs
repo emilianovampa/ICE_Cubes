@@ -7,11 +7,12 @@ using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using FrbaCrucero.model;
 
 
 namespace FrbaCrucero
 {
-   public class usuario
+   public class Usuario
     {
         public string nombreUsuario {set ; get; }
         public string passUsuario { set; get; }
@@ -22,14 +23,14 @@ namespace FrbaCrucero
         //private string usuario1;
         //private string pass;
 
-        public usuario(string usuario1, string pass)
+        public Usuario(string usuario1, string pass)
         {
             // TODO: Complete member initialization
             this.nombreUsuario = usuario1;
             this.passUsuario = pass;
         }
 
-        public usuario()
+        public Usuario()
         {
             // TODO: Complete member initialization
         }
@@ -119,6 +120,10 @@ namespace FrbaCrucero
 
         //}
 
+        public Boolean poseeFuncionalidad(int idFuncion)
+        {
+            return this.usuarioRol.Funcionalidades.Exists(X => X.IdFuncion == idFuncion);
+        }
 
 
         //public  getFuncionalidades()

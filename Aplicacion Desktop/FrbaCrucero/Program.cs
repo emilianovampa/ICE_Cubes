@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using FrbaCrucero.Menu;
 using System.Configuration;
 using FrbaCrucero.PagoReserva;
+using FrbaCrucero.model;
+
 
 namespace FrbaCrucero
 {
@@ -22,11 +24,8 @@ namespace FrbaCrucero
             ConexionSQLS.iniciarConeccion(); //establesco la conexion por unica vez con la Base de datos.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            new BusquedaReservaVista().ShowDialog();
-            
-  //          new loginView().ShowDialog();
+            new loginView().ShowDialog();
             Application.Run();
-            //new AltaRolView().ShowDialog();
         }
 
         public static DateTime ObtenerFechaActual()

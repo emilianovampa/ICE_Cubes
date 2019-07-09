@@ -9,26 +9,18 @@ namespace FrbaCrucero.Menu
     class MenuController
     {
         MenuPpal laVistacentral ;
-        usuario unUsuarioCentral ;
+        Usuario unUsuarioCentral ;
 
-       public MenuController(usuario unUsuarioVista2, MenuPpal menuPpal)
+       public MenuController(Usuario unUsuarioVista2, MenuPpal menuPpal)
         {
             // TODO: Complete member initialization
             this.unUsuarioCentral = unUsuarioVista2;
             this.laVistacentral = menuPpal;
         }
 
-
-        public void login (){
-         
-         
-
-        
-        }
-
         internal bool soyVisible(int p)
         {
-           return unUsuarioCentral.usuarioRol.Funcionalidades.Exists(X => X.IdFuncion == p);
+            return unUsuarioCentral.poseeFuncionalidad(p);
         }
     }
 }

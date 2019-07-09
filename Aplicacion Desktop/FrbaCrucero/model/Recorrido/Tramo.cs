@@ -8,7 +8,7 @@ namespace FrbaCrucero.model
 {
     public class Tramo
     {
-        public Tramo(int nivel,Puerto origen, Puerto destino, double precio)
+        public Tramo(int nivel,Puerto origen, Puerto destino, decimal precio)
         {
             this.nivel = nivel;
             this.origen = origen;
@@ -22,7 +22,7 @@ namespace FrbaCrucero.model
         [System.ComponentModel.DisplayName("Destino")]
         public Puerto destino { get; set; }
         [System.ComponentModel.DisplayName("Precio")]
-        public double precio { get; set; }
+        public decimal precio { get; set; }
 
         public Boolean pasaPor(Puerto puerto)
         {

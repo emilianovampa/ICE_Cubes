@@ -20,7 +20,7 @@ namespace FrbaCrucero
     public class loginController 
     {
         loginView unaVistaLogin;
-        usuario unUsuarioVista2 = new usuario();
+        Usuario unUsuarioVista2 = new Usuario();
 
 
         public loginController(loginView laVistaLogin)
@@ -31,7 +31,7 @@ namespace FrbaCrucero
 
         public void Ingresar(string usuario, string pass)
         {
-            usuario unUsuarioVista = new usuario(usuario, pass);
+            Usuario unUsuarioVista = new Usuario(usuario, pass);
             unUsuarioVista2.nombreUsuario=usuario;
             unUsuarioVista2.passUsuario = pass;
             MessageBox.Show(unUsuarioVista2.logueate());
