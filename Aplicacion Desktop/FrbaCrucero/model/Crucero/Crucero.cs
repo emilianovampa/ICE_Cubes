@@ -8,6 +8,9 @@ namespace FrbaCrucero.model
 {
     public class Crucero
     {
+        [System.ComponentModel.DisplayName("Codigo Crucero")]
+        public int id { get; set; }
+
         [System.ComponentModel.DisplayName("Identificador")]
         public Int32 identificador { get; set;}
 
@@ -25,5 +28,11 @@ namespace FrbaCrucero.model
 
 //        [System.ComponentModel.DisplayName("Tipo de Servicio")]
         public TipoServicio servicio;
+
+        public Crucero(int CruceroID)
+        {
+            // TODO: Complete member initialization
+            this.id = CruceroID;
+        }
     }
 }

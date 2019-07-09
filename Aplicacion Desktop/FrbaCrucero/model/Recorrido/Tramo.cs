@@ -15,6 +15,11 @@ namespace FrbaCrucero.model
             this.destino = destino;
             this.precio = precio;
         }
+
+        public Tramo()
+        {
+            // TODO: Complete member initialization
+        }
         [System.ComponentModel.DisplayName("Nivel")]
         public int nivel { get; set; }
         [System.ComponentModel.DisplayName("Origen")]

@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.FechaDesdeDTP = new System.Windows.Forms.DateTimePicker();
+            this.FechaDesdeDTP.MinDate = Program.dia.Date;
+            //this.FechaDesdeDTP.Value = Program.dia.Date;
             this.FechHastaDTP = new System.Windows.Forms.DateTimePicker();
-            this.SeleccionPuertoB = new System.Windows.Forms.Button();
+            //this.FechHastaDTP.Value = Program.dia.Date;
+            this.SeleccionPOrigenB = new System.Windows.Forms.Button();
             this.PuertoOrigenTB = new System.Windows.Forms.TextBox();
             this.PuertoDestinoTB = new System.Windows.Forms.TextBox();
-            this.CabinasDisponiblesDTV = new System.Windows.Forms.DataGridView();
             this.CantPasajesCB = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,9 +44,10 @@
             this.ReservaB = new System.Windows.Forms.Button();
             this.CancelarB = new System.Windows.Forms.Button();
             this.BuscarViajesB = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SeleccionarPDestinoB = new System.Windows.Forms.Button();
             this.ViajesDGV = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.CabinasDisponiblesDTV)).BeginInit();
+            this.RecorridoB = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cabinaB = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ViajesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,18 +65,19 @@
             this.FechHastaDTP.Size = new System.Drawing.Size(200, 20);
             this.FechHastaDTP.TabIndex = 1;
             // 
-            // SeleccionPuertoB
+            // SeleccionPOrigenB
             // 
-            this.SeleccionPuertoB.Location = new System.Drawing.Point(12, 114);
-            this.SeleccionPuertoB.Name = "SeleccionPuertoB";
-            this.SeleccionPuertoB.Size = new System.Drawing.Size(163, 23);
-            this.SeleccionPuertoB.TabIndex = 2;
-            this.SeleccionPuertoB.Text = "Seleccionar Puerto Origen";
-            this.SeleccionPuertoB.UseVisualStyleBackColor = true;
-            this.SeleccionPuertoB.Click += new System.EventHandler(this.SeleccionPuertoB_Click);
+            this.SeleccionPOrigenB.Location = new System.Drawing.Point(12, 114);
+            this.SeleccionPOrigenB.Name = "SeleccionPOrigenB";
+            this.SeleccionPOrigenB.Size = new System.Drawing.Size(163, 23);
+            this.SeleccionPOrigenB.TabIndex = 2;
+            this.SeleccionPOrigenB.Text = "Seleccionar Puerto Origen";
+            this.SeleccionPOrigenB.UseVisualStyleBackColor = true;
+            this.SeleccionPOrigenB.Click += new System.EventHandler(this.SeleccionPuertoB_Click);
             // 
             // PuertoOrigenTB
             // 
+            this.PuertoOrigenTB.Enabled = false;
             this.PuertoOrigenTB.Location = new System.Drawing.Point(11, 143);
             this.PuertoOrigenTB.Name = "PuertoOrigenTB";
             this.PuertoOrigenTB.Size = new System.Drawing.Size(164, 20);
@@ -81,22 +85,25 @@
             // 
             // PuertoDestinoTB
             // 
+            this.PuertoDestinoTB.Enabled = false;
             this.PuertoDestinoTB.Location = new System.Drawing.Point(235, 143);
             this.PuertoDestinoTB.Name = "PuertoDestinoTB";
             this.PuertoDestinoTB.Size = new System.Drawing.Size(164, 20);
             this.PuertoDestinoTB.TabIndex = 4;
             // 
-            // CabinasDisponiblesDTV
-            // 
-            this.CabinasDisponiblesDTV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CabinasDisponiblesDTV.Location = new System.Drawing.Point(11, 217);
-            this.CabinasDisponiblesDTV.Name = "CabinasDisponiblesDTV";
-            this.CabinasDisponiblesDTV.Size = new System.Drawing.Size(201, 150);
-            this.CabinasDisponiblesDTV.TabIndex = 5;
-            // 
             // CantPasajesCB
             // 
             this.CantPasajesCB.FormattingEnabled = true;
+            this.CantPasajesCB.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
             this.CantPasajesCB.Location = new System.Drawing.Point(119, 175);
             this.CantPasajesCB.Name = "CantPasajesCB";
             this.CantPasajesCB.Size = new System.Drawing.Size(35, 21);
@@ -155,10 +162,11 @@
             this.CancelarB.TabIndex = 14;
             this.CancelarB.Text = "Cancelar";
             this.CancelarB.UseVisualStyleBackColor = true;
+            this.CancelarB.Click += new System.EventHandler(this.CancelarB_Click);
             // 
             // BuscarViajesB
             // 
-            this.BuscarViajesB.Location = new System.Drawing.Point(241, 188);
+            this.BuscarViajesB.Location = new System.Drawing.Point(235, 175);
             this.BuscarViajesB.Name = "BuscarViajesB";
             this.BuscarViajesB.Size = new System.Drawing.Size(99, 23);
             this.BuscarViajesB.TabIndex = 15;
@@ -166,22 +174,43 @@
             this.BuscarViajesB.UseVisualStyleBackColor = true;
             this.BuscarViajesB.Click += new System.EventHandler(this.BuscarViajesB_Click);
             // 
-            // button1
+            // SeleccionarPDestinoB
             // 
-            this.button1.Location = new System.Drawing.Point(235, 114);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Seleccionar Puerto Destino";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SeleccionarPDestinoB.Location = new System.Drawing.Point(235, 114);
+            this.SeleccionarPDestinoB.Name = "SeleccionarPDestinoB";
+            this.SeleccionarPDestinoB.Size = new System.Drawing.Size(164, 23);
+            this.SeleccionarPDestinoB.TabIndex = 16;
+            this.SeleccionarPDestinoB.Text = "Seleccionar Puerto Destino";
+            this.SeleccionarPDestinoB.UseVisualStyleBackColor = true;
+            this.SeleccionarPDestinoB.Click += new System.EventHandler(this.button1_Click);
             // 
             // ViajesDGV
             // 
             this.ViajesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ViajesDGV.Location = new System.Drawing.Point(241, 217);
+            this.ViajesDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RecorridoB,
+            this.cabinaB});
+            this.ViajesDGV.Location = new System.Drawing.Point(11, 204);
             this.ViajesDGV.Name = "ViajesDGV";
-            this.ViajesDGV.Size = new System.Drawing.Size(240, 150);
+            this.ViajesDGV.Size = new System.Drawing.Size(534, 147);
             this.ViajesDGV.TabIndex = 17;
+            this.ViajesDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViajesDGV_CellContentClick);
+            // 
+            // RecorridoB
+            // 
+            this.RecorridoB.HeaderText = "Recorrido";
+            this.RecorridoB.Name = "RecorridoB";
+            this.RecorridoB.Text = "Visualizar";
+            this.RecorridoB.ToolTipText = "Visualizar";
+            this.RecorridoB.UseColumnTextForButtonValue = true;
+            // 
+            // cabinaB
+            // 
+            this.cabinaB.HeaderText = "Cabinas Disponibles";
+            this.cabinaB.Name = "cabinaB";
+            this.cabinaB.Text = "Visualizar";
+            this.cabinaB.ToolTipText = "Visualizar";
+            this.cabinaB.UseColumnTextForButtonValue = true;
             // 
             // ComprarPasajeVista
             // 
@@ -189,7 +218,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(558, 447);
             this.Controls.Add(this.ViajesDGV);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SeleccionarPDestinoB);
             this.Controls.Add(this.BuscarViajesB);
             this.Controls.Add(this.CancelarB);
             this.Controls.Add(this.ReservaB);
@@ -198,15 +227,13 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CantPasajesCB);
-            this.Controls.Add(this.CabinasDisponiblesDTV);
             this.Controls.Add(this.PuertoDestinoTB);
             this.Controls.Add(this.PuertoOrigenTB);
-            this.Controls.Add(this.SeleccionPuertoB);
+            this.Controls.Add(this.SeleccionPOrigenB);
             this.Controls.Add(this.FechHastaDTP);
             this.Controls.Add(this.FechaDesdeDTP);
             this.Name = "ComprarPasajeVista";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.CabinasDisponiblesDTV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ViajesDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -217,10 +244,9 @@
 
         private System.Windows.Forms.DateTimePicker FechaDesdeDTP;
         private System.Windows.Forms.DateTimePicker FechHastaDTP;
-        private System.Windows.Forms.Button SeleccionPuertoB;
+        private System.Windows.Forms.Button SeleccionPOrigenB;
         private System.Windows.Forms.TextBox PuertoOrigenTB;
         private System.Windows.Forms.TextBox PuertoDestinoTB;
-        private System.Windows.Forms.DataGridView CabinasDisponiblesDTV;
         private System.Windows.Forms.ComboBox CantPasajesCB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
@@ -229,7 +255,9 @@
         private System.Windows.Forms.Button ReservaB;
         private System.Windows.Forms.Button CancelarB;
         private System.Windows.Forms.Button BuscarViajesB;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SeleccionarPDestinoB;
         private System.Windows.Forms.DataGridView ViajesDGV;
+        private System.Windows.Forms.DataGridViewButtonColumn RecorridoB;
+        private System.Windows.Forms.DataGridViewButtonColumn cabinaB;
     }
 }

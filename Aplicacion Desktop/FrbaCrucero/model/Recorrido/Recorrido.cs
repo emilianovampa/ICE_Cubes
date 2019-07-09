@@ -44,6 +44,12 @@ namespace FrbaCrucero.model
             this.tramos = tramos;
             this.estado = estado;
         }
+
+        public Recorrido(int recorridoId)
+        {
+            // TODO: Complete member initialization
+            this.id = recorridoId;
+        }
         
         public int guardarRecorrido()
         {

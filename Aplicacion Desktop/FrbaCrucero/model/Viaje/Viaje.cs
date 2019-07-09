@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,16 +12,18 @@ namespace FrbaCrucero.model
 {
     class Viaje
     {
-//        [System.ComponentModel.DisplayName("Fecha de Inicio")]
-        public Nullable<DateTime> fechaInicio ;
+        [System.ComponentModel.DisplayName("Codigo de Viaje")]
+        public int viajeId { get; set; }
+       [System.ComponentModel.DisplayName("Fecha de Inicio")]
+        public Nullable<DateTime> fechaInicio { get; set; }
 
-       public Nullable<DateTime> fechaFin ;
+        public Nullable<DateTime> fechaFin { get; set; }
 
-//        [System.ComponentModel.DisplayName("Crucero")]
-        public Crucero crucero;
+        [System.ComponentModel.DisplayName("Crucero")]
+        public Crucero crucero { get; set; }
 
-//        [System.ComponentModel.DisplayName("Recorrido")]
-        public Recorrido recorrido;
+        [System.ComponentModel.DisplayName("Recorrido")]
+        public Recorrido recorrido { get; set; }
 
         public Viaje(Crucero crucero, Recorrido recorrido, Nullable<DateTime> fechaInicio, Nullable<DateTime> fechaFin)
         {
@@ -29,29 +32,40 @@ namespace FrbaCrucero.model
             this.fechaInicio = fechaInicio;
             this.fechaFin = fechaFin;
         }
+        public Viaje(int viajeID, int CruceroID, int recorridoId, DateTime FInicio, DateTime FFin)
+        {
+            // TODO: Complete member initialization
+            this.viajeId = viajeID;
+            this.crucero = new Crucero (CruceroID);
+            this.recorrido = new Recorrido(recorridoId);
+            this.fechaInicio = FInicio;
+            this.fechaFin = FFin;
+        }
 
 
-        public static List<Viaje> getViajesActvos(DateTime fechaDesde, DateTime FechaHasta, string POrigen, string Pdestino)
+        public static List<Viaje> getViajesActvos(DateTime fechaDesde, DateTime FechaHasta, Tramo unTramo)
         {
             List<Viaje> listadoViaje = new List<Viaje>();
             SqlConnection conexion = ConexionSQLS.getConeccion();
             try
             {
-                String select = "SELECT * "
-                              + "FROM ICE_CUBES.OPERACION WHERE OPER_ESTADO = 1"
-                              //+ " AND OPER_RESERVA_ID =" + numeroReserva.ToString()
-                              + " ORDER BY 2";
-
-                SqlCommand consulta = new SqlCommand(select.ToString(), conexion);
+                SqlCommand consulta = new SqlCommand("ICE_CUBES.SP_BUSCARVIAJES", conexion);
+                consulta.CommandType = CommandType.StoredProcedure;
+                consulta.Parameters.AddWithValue("@FDESDE",fechaDesde);
+                consulta.Parameters.AddWithValue("@FHASTA", FechaHasta);
+                consulta.Parameters.AddWithValue("@PORIGEN",unTramo.origen.idPuerto);
+                consulta.Parameters.AddWithValue("@PDESTINO", unTramo.destino.idPuerto);
                 conexion.Open();
-                SqlDataReader reservas = consulta.ExecuteReader();
-                while (reservas.Read())
+                SqlDataReader viajes = consulta.ExecuteReader();
+                while (viajes.Read())
                 {
-                    //listadoViaje.Add(new Reserva(reservas.GetInt32(0),
-                    //                                reservas.GetDecimal(1),
-                    //                                reservas.GetDateTime(2),
-                    //                                reservas.GetDecimal(3),
-                    //                                reservas.GetDateTime(4),
+                    listadoViaje.Add(new Viaje(viajes.GetInt32(0),
+                                               viajes.GetInt32(1),
+                                               viajes.GetInt32(2),
+                                               viajes.GetDateTime(3),
+                                               viajes.GetDateTime(4)
+                                               )
+                                     );
                     //                                reservas.GetDecimal(5),
                     //                                reservas.GetDecimal(6),
                     //                                reservas.GetInt32(7),

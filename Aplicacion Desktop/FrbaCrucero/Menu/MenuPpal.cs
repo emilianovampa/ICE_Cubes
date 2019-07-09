@@ -67,12 +67,12 @@ namespace FrbaCrucero.Menu
 
         private void btn_reporting_Click(object sender, EventArgs e)
         {
-            new ComprarPasajeVista().ShowDialog();
+            
         }
 
         private void btn_compraReserva_Click(object sender, EventArgs e)
         {
-
+            new ComprarPasajeVista().ShowDialog();
         }
 
         private void btn_abmPuerto_Click(object sender, EventArgs e)
