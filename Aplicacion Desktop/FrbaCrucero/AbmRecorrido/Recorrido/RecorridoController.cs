@@ -12,19 +12,17 @@ namespace FrbaCrucero{
     public class RecorridoController
     {
         private RecorridoView vista;
-        private SeleccionadorRecorrido caller;
         private Recorrido recorrido;
         private BindingList<Tramo> tramos;
-        public RecorridoController(RecorridoView vista, SeleccionadorRecorrido caller, Recorrido recorrido)
+        public RecorridoController(RecorridoView vista, Recorrido recorrido)
         {
             this.vista = vista;
-            this.caller = caller;
             this.recorrido = recorrido;
         }
 
         public void setearDatosIniciales()
         {
-            vista.setNroRecorrido(recorrido.id.ToString(), recorrido.getEstado());
+            vista.setNroRecorrido(recorrido.id.ToString(), recorrido.estado);
             
             if(recorrido.id == 0)
             {
@@ -34,9 +32,9 @@ namespace FrbaCrucero{
             if (recorrido.id > 0)
             {
                 vista.setTramos(getTramos());
-                vista.eliminarOnOff(recorrido.getEstado());
+                vista.eliminarOnOff(recorrido.estado);
             }
-            vista.estadoCampos(recorrido.getEstado());
+            vista.estadoCampos(recorrido.estado);
         }
 
         public BindingSource inicializarTramos()
@@ -55,6 +53,8 @@ namespace FrbaCrucero{
         {
             recorrido.eliminarRecorrido();
             vista.eliminarOnOff(false);
+            vista.estadoCampos(recorrido.estado);
+            vista.setNroRecorrido(recorrido.id.ToString(), recorrido.estado);
         }
 
         internal void edit(int p)
@@ -134,8 +134,8 @@ namespace FrbaCrucero{
         {
             recorrido.setTramos(tramos.ToList<Tramo>());
             recorrido.id = recorrido.guardarRecorrido();
-            vista.setNroRecorrido(recorrido.id.ToString(), recorrido.getEstado());
-            vista.eliminarOnOff(recorrido.getEstado());
+            vista.setNroRecorrido(recorrido.id.ToString(), recorrido.estado);
+            vista.eliminarOnOff(recorrido.estado);
         }
     }
 }

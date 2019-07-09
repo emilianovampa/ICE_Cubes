@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrbaCrucero.Menu;
 using System.Configuration;
+using FrbaCrucero.PagoReserva;
+using FrbaCrucero.model;
+
 
 namespace FrbaCrucero
 {
@@ -23,7 +26,6 @@ namespace FrbaCrucero
             Application.SetCompatibleTextRenderingDefault(false);
             new loginView().ShowDialog();
             Application.Run();
-            //new AltaRolView().ShowDialog();
         }
 
         public static DateTime ObtenerFechaActual()

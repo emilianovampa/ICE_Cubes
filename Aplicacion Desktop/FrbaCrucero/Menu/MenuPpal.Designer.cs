@@ -28,150 +28,169 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_compraReserva = new System.Windows.Forms.Button();
+            this.btn_pagoReserva = new System.Windows.Forms.Button();
             this.btn_abmRol = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btn_abmRecorrido = new System.Windows.Forms.Button();
+            this.btn_abmCrucero = new System.Windows.Forms.Button();
+            this.btn_altaViaje = new System.Windows.Forms.Button();
+            this.btn_reporting = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_cerrar = new System.Windows.Forms.Button();
+            this.btn_abmPuerto = new System.Windows.Forms.Button();
+            this.btn_abmUsuario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_compraReserva
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(100, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Compra/Reserva de Viaje";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_compraReserva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_compraReserva.Location = new System.Drawing.Point(133, 90);
+            this.btn_compraReserva.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_compraReserva.Name = "btn_compraReserva";
+            this.btn_compraReserva.Size = new System.Drawing.Size(187, 31);
+            this.btn_compraReserva.TabIndex = 0;
+            this.btn_compraReserva.Text = "Compra/Reserva de Viaje";
+            this.btn_compraReserva.UseVisualStyleBackColor = true;
+            this.btn_compraReserva.Click += new System.EventHandler(this.btn_compraReserva_Click);
             // 
-            // button2
+            // btn_pagoReserva
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(100, 104);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 25);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Pago Reserva";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(100, 135);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 25);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "ABM Puertos";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_pagoReserva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pagoReserva.Location = new System.Drawing.Point(133, 128);
+            this.btn_pagoReserva.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_pagoReserva.Name = "btn_pagoReserva";
+            this.btn_pagoReserva.Size = new System.Drawing.Size(187, 31);
+            this.btn_pagoReserva.TabIndex = 1;
+            this.btn_pagoReserva.Text = "Pago Reserva";
+            this.btn_pagoReserva.UseVisualStyleBackColor = true;
+            this.btn_pagoReserva.Click += new System.EventHandler(this.btn_pagoReserva_Click);
             // 
             // btn_abmRol
             // 
             this.btn_abmRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_abmRol.Location = new System.Drawing.Point(100, 165);
+            this.btn_abmRol.Location = new System.Drawing.Point(133, 167);
+            this.btn_abmRol.Margin = new System.Windows.Forms.Padding(4);
             this.btn_abmRol.Name = "btn_abmRol";
-            this.btn_abmRol.Size = new System.Drawing.Size(140, 25);
+            this.btn_abmRol.Size = new System.Drawing.Size(187, 31);
             this.btn_abmRol.TabIndex = 3;
             this.btn_abmRol.Text = "ABM Rol";
             this.btn_abmRol.UseVisualStyleBackColor = true;
             this.btn_abmRol.Click += new System.EventHandler(this.btn_abmRol_Click);
             // 
-            // button5
+            // btn_abmRecorrido
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(100, 196);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(140, 25);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "ABM Usuarios";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_abmRecorrido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abmRecorrido.Location = new System.Drawing.Point(133, 206);
+            this.btn_abmRecorrido.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_abmRecorrido.Name = "btn_abmRecorrido";
+            this.btn_abmRecorrido.Size = new System.Drawing.Size(187, 31);
+            this.btn_abmRecorrido.TabIndex = 5;
+            this.btn_abmRecorrido.Text = "ABM Recorridos";
+            this.btn_abmRecorrido.UseVisualStyleBackColor = true;
+            this.btn_abmRecorrido.Click += new System.EventHandler(this.btn_abmRecorrido_Click);
             // 
-            // button6
+            // btn_abmCrucero
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(100, 227);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(140, 25);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "ABM Recorridos";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btn_abmCrucero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abmCrucero.Location = new System.Drawing.Point(133, 245);
+            this.btn_abmCrucero.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_abmCrucero.Name = "btn_abmCrucero";
+            this.btn_abmCrucero.Size = new System.Drawing.Size(187, 31);
+            this.btn_abmCrucero.TabIndex = 6;
+            this.btn_abmCrucero.Text = "ABM Cruceros";
+            this.btn_abmCrucero.UseVisualStyleBackColor = true;
+            this.btn_abmCrucero.Click += new System.EventHandler(this.btn_abmCrucero_Click);
             // 
-            // button7
+            // btn_altaViaje
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(100, 258);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(140, 25);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "ABM Cruceros";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btn_altaViaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_altaViaje.Location = new System.Drawing.Point(133, 284);
+            this.btn_altaViaje.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_altaViaje.Name = "btn_altaViaje";
+            this.btn_altaViaje.Size = new System.Drawing.Size(187, 31);
+            this.btn_altaViaje.TabIndex = 7;
+            this.btn_altaViaje.Text = "Generar Viaje";
+            this.btn_altaViaje.UseVisualStyleBackColor = true;
+            this.btn_altaViaje.Click += new System.EventHandler(this.btn_altaViaje_Click);
             // 
-            // button8
+            // btn_reporting
             // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(100, 289);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(140, 25);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Generar Viaje";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(100, 320);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(140, 25);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "ListadosTOP";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btn_reporting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reporting.Location = new System.Drawing.Point(133, 323);
+            this.btn_reporting.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_reporting.Name = "btn_reporting";
+            this.btn_reporting.Size = new System.Drawing.Size(187, 31);
+            this.btn_reporting.TabIndex = 8;
+            this.btn_reporting.Text = "ListadosTOP";
+            this.btn_reporting.UseVisualStyleBackColor = true;
+            this.btn_reporting.Click += new System.EventHandler(this.btn_reporting_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(96, 35);
+            this.label1.Location = new System.Drawing.Point(128, 43);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Funcionalidades";
             // 
             // btn_cerrar
             // 
             this.btn_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar.Location = new System.Drawing.Point(100, 372);
+            this.btn_cerrar.Location = new System.Drawing.Point(133, 458);
+            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(140, 25);
+            this.btn_cerrar.Size = new System.Drawing.Size(187, 31);
             this.btn_cerrar.TabIndex = 10;
             this.btn_cerrar.Text = "Cerrar";
             this.btn_cerrar.UseVisualStyleBackColor = true;
             this.btn_cerrar.Click += new System.EventHandler(this.button10_Click);
             // 
+            // btn_abmPuerto
+            // 
+            this.btn_abmPuerto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abmPuerto.Location = new System.Drawing.Point(133, 362);
+            this.btn_abmPuerto.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_abmPuerto.Name = "btn_abmPuerto";
+            this.btn_abmPuerto.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_abmPuerto.Size = new System.Drawing.Size(187, 31);
+            this.btn_abmPuerto.TabIndex = 11;
+            this.btn_abmPuerto.Text = "ABM Puerto";
+            this.btn_abmPuerto.UseVisualStyleBackColor = true;
+            this.btn_abmPuerto.Click += new System.EventHandler(this.btn_abmPuerto_Click);
+            // 
+            // btn_abmUsuario
+            // 
+            this.btn_abmUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abmUsuario.Location = new System.Drawing.Point(133, 401);
+            this.btn_abmUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_abmUsuario.Name = "btn_abmUsuario";
+            this.btn_abmUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_abmUsuario.Size = new System.Drawing.Size(187, 31);
+            this.btn_abmUsuario.TabIndex = 12;
+            this.btn_abmUsuario.Text = "ABM Usuario";
+            this.btn_abmUsuario.UseVisualStyleBackColor = true;
+            this.btn_abmUsuario.Click += new System.EventHandler(this.btn_abmUsuario_Click);
+            // 
             // MenuPpal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 417);
+            this.ClientSize = new System.Drawing.Size(472, 513);
+            this.Controls.Add(this.btn_abmUsuario);
+            this.Controls.Add(this.btn_abmPuerto);
             this.Controls.Add(this.btn_cerrar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btn_reporting);
+            this.Controls.Add(this.btn_altaViaje);
+            this.Controls.Add(this.btn_abmCrucero);
+            this.Controls.Add(this.btn_abmRecorrido);
             this.Controls.Add(this.btn_abmRol);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_pagoReserva);
+            this.Controls.Add(this.btn_compraReserva);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuPpal";
             this.Text = "MenuCentral";
             this.ResumeLayout(false);
@@ -181,16 +200,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_compraReserva;
+        private System.Windows.Forms.Button btn_pagoReserva;
         private System.Windows.Forms.Button btn_abmRol;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btn_abmRecorrido;
+        private System.Windows.Forms.Button btn_abmCrucero;
+        private System.Windows.Forms.Button btn_altaViaje;
+        private System.Windows.Forms.Button btn_reporting;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_cerrar;
+        private System.Windows.Forms.Button btn_abmPuerto;
+        private System.Windows.Forms.Button btn_abmUsuario;
     }
 }

@@ -42,9 +42,10 @@
             // 
             // clienteboton
             // 
-            this.clienteboton.Location = new System.Drawing.Point(12, 69);
+            this.clienteboton.Location = new System.Drawing.Point(16, 85);
+            this.clienteboton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clienteboton.Name = "clienteboton";
-            this.clienteboton.Size = new System.Drawing.Size(75, 23);
+            this.clienteboton.Size = new System.Drawing.Size(100, 28);
             this.clienteboton.TabIndex = 0;
             this.clienteboton.Text = "Cliente";
             this.clienteboton.UseVisualStyleBackColor = true;
@@ -52,9 +53,10 @@
             // 
             // vendedorboton
             // 
-            this.vendedorboton.Location = new System.Drawing.Point(12, 111);
+            this.vendedorboton.Location = new System.Drawing.Point(16, 137);
+            this.vendedorboton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.vendedorboton.Name = "vendedorboton";
-            this.vendedorboton.Size = new System.Drawing.Size(75, 23);
+            this.vendedorboton.Size = new System.Drawing.Size(100, 28);
             this.vendedorboton.TabIndex = 1;
             this.vendedorboton.Text = "Vendedor";
             this.vendedorboton.UseVisualStyleBackColor = true;
@@ -63,9 +65,10 @@
             // userLabel
             // 
             this.userLabel.AutoSize = true;
-            this.userLabel.Location = new System.Drawing.Point(201, 79);
+            this.userLabel.Location = new System.Drawing.Point(268, 97);
+            this.userLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(43, 13);
+            this.userLabel.Size = new System.Drawing.Size(57, 17);
             this.userLabel.TabIndex = 2;
             this.userLabel.Text = "Usuario";
             this.userLabel.Visible = false;
@@ -73,27 +76,31 @@
             // passLabel
             // 
             this.passLabel.AutoSize = true;
-            this.passLabel.Location = new System.Drawing.Point(201, 128);
+            this.passLabel.Location = new System.Drawing.Point(268, 158);
+            this.passLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.passLabel.Name = "passLabel";
-            this.passLabel.Size = new System.Drawing.Size(61, 13);
+            this.passLabel.Size = new System.Drawing.Size(81, 17);
             this.passLabel.TabIndex = 3;
             this.passLabel.Text = "Contraseña";
             this.passLabel.Visible = false;
             // 
             // usuarioTextB
             // 
-            this.usuarioTextB.Location = new System.Drawing.Point(279, 76);
+            this.usuarioTextB.Location = new System.Drawing.Point(372, 94);
+            this.usuarioTextB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.usuarioTextB.Name = "usuarioTextB";
-            this.usuarioTextB.Size = new System.Drawing.Size(100, 20);
+            this.usuarioTextB.Size = new System.Drawing.Size(132, 22);
             this.usuarioTextB.TabIndex = 4;
             this.usuarioTextB.Visible = false;
             this.usuarioTextB.TextChanged += new System.EventHandler(this.usuarioTextB_TextChanged);
             // 
             // passTextB
             // 
-            this.passTextB.Location = new System.Drawing.Point(279, 121);
+            this.passTextB.Location = new System.Drawing.Point(372, 149);
+            this.passTextB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.passTextB.Name = "passTextB";
-            this.passTextB.Size = new System.Drawing.Size(100, 20);
+            this.passTextB.PasswordChar = '*';
+            this.passTextB.Size = new System.Drawing.Size(132, 22);
             this.passTextB.TabIndex = 5;
             this.passTextB.Visible = false;
             this.passTextB.TextChanged += new System.EventHandler(this.passTextB_TextChanged);
@@ -101,9 +108,10 @@
             // userPassLabel
             // 
             this.userPassLabel.AutoSize = true;
-            this.userPassLabel.Location = new System.Drawing.Point(218, 42);
+            this.userPassLabel.Location = new System.Drawing.Point(291, 52);
+            this.userPassLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.userPassLabel.Name = "userPassLabel";
-            this.userPassLabel.Size = new System.Drawing.Size(146, 13);
+            this.userPassLabel.Size = new System.Drawing.Size(196, 17);
             this.userPassLabel.TabIndex = 6;
             this.userPassLabel.Text = "Ingrese Usuario y Contraseña";
             this.userPassLabel.Visible = false;
@@ -111,17 +119,19 @@
             // opcionLabel
             // 
             this.opcionLabel.AutoSize = true;
-            this.opcionLabel.Location = new System.Drawing.Point(12, 24);
+            this.opcionLabel.Location = new System.Drawing.Point(16, 30);
+            this.opcionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.opcionLabel.Name = "opcionLabel";
-            this.opcionLabel.Size = new System.Drawing.Size(118, 13);
+            this.opcionLabel.Size = new System.Drawing.Size(154, 17);
             this.opcionLabel.TabIndex = 7;
             this.opcionLabel.Text = "Seleccione una Opcion";
             // 
             // ingresarboton
             // 
-            this.ingresarboton.Location = new System.Drawing.Point(204, 161);
+            this.ingresarboton.Location = new System.Drawing.Point(272, 198);
+            this.ingresarboton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ingresarboton.Name = "ingresarboton";
-            this.ingresarboton.Size = new System.Drawing.Size(75, 23);
+            this.ingresarboton.Size = new System.Drawing.Size(100, 28);
             this.ingresarboton.TabIndex = 8;
             this.ingresarboton.Text = "Ingresar";
             this.ingresarboton.UseVisualStyleBackColor = true;
@@ -130,9 +140,10 @@
             // 
             // cancelarBoton
             // 
-            this.cancelarBoton.Location = new System.Drawing.Point(330, 161);
+            this.cancelarBoton.Location = new System.Drawing.Point(440, 198);
+            this.cancelarBoton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelarBoton.Name = "cancelarBoton";
-            this.cancelarBoton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarBoton.Size = new System.Drawing.Size(100, 28);
             this.cancelarBoton.TabIndex = 9;
             this.cancelarBoton.Text = "Cancelar";
             this.cancelarBoton.UseVisualStyleBackColor = true;
@@ -140,9 +151,9 @@
             // 
             // loginView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 205);
+            this.ClientSize = new System.Drawing.Size(576, 252);
             this.Controls.Add(this.cancelarBoton);
             this.Controls.Add(this.ingresarboton);
             this.Controls.Add(this.opcionLabel);
@@ -153,6 +164,7 @@
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.vendedorboton);
             this.Controls.Add(this.clienteboton);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "loginView";
             this.Text = "Login";
             this.ResumeLayout(false);
