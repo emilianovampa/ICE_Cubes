@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrbaCrucero.AbmCrucero
+namespace FrbaCrucero.CompraReservaPasaje
 {
-    public partial class Form1 : Form
+    public partial class PagoVista : Form
     {
-        public Form1()
+        public PagoVista()
         {
             InitializeComponent();
         }

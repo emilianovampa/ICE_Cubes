@@ -35,5 +35,10 @@ namespace FrbaCrucero.PagoReserva
                  }
 
         }
+
+        private void PagarBoton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
