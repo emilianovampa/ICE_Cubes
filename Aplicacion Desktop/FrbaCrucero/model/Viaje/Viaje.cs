@@ -17,6 +17,7 @@ namespace FrbaCrucero.model
        [System.ComponentModel.DisplayName("Fecha de Inicio")]
         public Nullable<DateTime> fechaInicio { get; set; }
 
+        [System.ComponentModel.DisplayName("Fecha de Fin")]
         public Nullable<DateTime> fechaFin { get; set; }
 
         [System.ComponentModel.DisplayName("Crucero")]

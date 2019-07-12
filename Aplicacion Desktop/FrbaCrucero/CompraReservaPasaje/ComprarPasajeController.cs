@@ -79,5 +79,14 @@ namespace FrbaCrucero.CompraReservaPasaje
         {
             return ( (unTramo.origen != null ) && ( unTramo.destino != null) );
         }
+
+        internal void buscarCabina(DataGridViewRow dataGridViewRow)
+        {   
+
+            BuscarCabinaVista unBuscadorDeCabinas = new BuscarCabinaVista(this);
+            unaComprarPasajeVista.Hide();
+            unBuscadorDeCabinas.ShowDialog();
+            unaComprarPasajeVista.Show();
+        }
     }
 }

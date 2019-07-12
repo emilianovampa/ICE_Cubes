@@ -40,6 +40,7 @@ namespace FrbaCrucero.CompraPasaje
                 if (unControllerCompraPasaje.ValidarPuertos())
                 {
                     ViajesDGV.DataSource = unControllerCompraPasaje.getViajes(FechaDesdeDTP.Value, FechHastaDTP.Value);
+                
                 }
                 else
                     MessageBox.Show(" Debe completar Puerto Origen y Puerto Destino");
@@ -54,7 +55,7 @@ namespace FrbaCrucero.CompraPasaje
 
         private void ViajesDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           unControllerCompraPasaje.buscarCabina(ViajesDGV.Rows[e.RowIndex]);
         }
 
         private void CancelarB_Click(object sender, EventArgs e)
