@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using FrbaCrucero.PagoReserva;
 using FrbaCrucero;
 using FrbaCrucero.CompraPasaje;
+using FrbaCrucero.ListadoEstadistico;
 
 
 namespace FrbaCrucero.Menu
@@ -67,7 +68,7 @@ namespace FrbaCrucero.Menu
 
         private void btn_reporting_Click(object sender, EventArgs e)
         {
-            
+            new ListadoTop5().ShowDialog();
         }
 
         private void btn_compraReserva_Click(object sender, EventArgs e)

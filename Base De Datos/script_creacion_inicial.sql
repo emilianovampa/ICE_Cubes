@@ -71,6 +71,8 @@ AS
 		DROP TABLE ICE_CUBES.VIAJE
 	IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ICE_CUBES.RECORRIDO'))
 		DROP TABLE ICE_CUBES.RECORRIDO
+	IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ICE_CUBES.Bajas_de_servicio'))
+		DROP TABLE ICE_CUBES.Bajas_de_servicio
 	IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ICE_CUBES.CRUCERO'))
 		DROP TABLE ICE_CUBES.CRUCERO
 	IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ICE_CUBES.MARCA'))
@@ -216,6 +218,16 @@ AS
 	--	PASAJE_RESERVA_ID DECIMAL(18,0) --FK RESERVA
 	--	)
 
+	--Sentencia crea tabla Bajas_de_servicio
+		CREATE TABLE ice_Cubes.Bajas_de_servicio (
+			cod_baja INTEGER IDENTITY(1,1) PRIMARY KEY,
+			cod_crucero INTEGER NOT NULL,
+			permanente bit NOT NULL DEFAULT(0),
+			fecha_baja datetime NOT NULL,
+			fecha_alta datetime,
+			CHECK(NOT permanente = 1 OR fecha_alta IS NULL)
+		);
+
 
 -- Creacion de FKs
 	ALTER TABLE ICE_CUBES.Rol_Funcionalidad WITH CHECK ADD
@@ -256,6 +268,9 @@ AS
 	CONSTRAINT FK_MARCA FOREIGN KEY (CRUCERO_MARCA_ID) REFERENCES ICE_CUBES.MARCA (MARCA_ID)
 	ON DELETE NO ACTION ON UPDATE CASCADE
 
+	ALTER TABLE ICE_CUBES.Bajas_de_servicio ADD
+CONSTRAINT fk_bajas_crucero FOREIGN KEY (cod_crucero) REFERENCES ICE_CUBES.crucero(CRUCERO_ID)
+ON DELETE NO ACTION ON UPDATE CASCADE;
 END
 
 GO
@@ -630,6 +645,179 @@ BEGIN
 	AND T.TRAMO_DESTINO = @PDESTINO
 
 END
+
+GO
+
+
+
+CREATE FUNCTION ice_cubes.fn_DiasDeshabilitado(@anio int,@fecha_comienzo_semestre datetime,@fecha_fin_semestre datetime, @cod_crucero INT)
+RETURNS INT
+AS 
+BEGIN
+
+	DECLARE @DiasFueraDeServicio INT
+
+	SELECT @DiasFueraDeServicio = coalesce(SUM(tabla.DiasFueraDeServicio),0) FROM(
+					SELECT 
+					CASE WHEN fe < @fecha_comienzo_semestre AND YEAR(fecha_alta) = @anio 
+					AND fecha_alta <= @fecha_fin_semestre AND fecha_alta >= @fecha_comienzo_semestre THEN DATEDIFF(DAY, @fecha_comienzo_semestre, fecha_alta)
+					WHEN fecha_baja >= @fecha_comienzo_semestre AND fecha_alta <= @fecha_fin_semestre THEN DATEDIFF(DAY, fecha_baja, fecha_alta)
+					WHEN YEAR(fecha_baja) = @anio  AND (fecha_baja >= @fecha_comienzo_semestre)
+						AND fecha_alta >= @fecha_fin_semestre THEN DATEDIFF(DAY, fecha_baja, @fecha_fin_semestre)
+					END AS DiasFueraDeServicio
+	FROM ICE_CUBES.CRUCERO c
+	WHERE c.CRUCERO_ID = @cod_crucero AND permanente = 0) AS tabla
+
+	RETURN @DiasFueraDeServicio
+END
+GO
+
+CREATE PROCEDURE ICE_CUBES.SP_top5_cruceros @anio int, @semestre int
+AS
+BEGIN	
+	
+DECLARE @mes_comienzo_semestre int
+DECLARE @mes_fin_semestre int
+DECLARE @fecha_comienzo_semestre datetime
+DECLARE @fecha_fin_semestre datetime
+	
+	IF @semestre = 1	
+	BEGIN	
+	SET @mes_comienzo_semestre = 1	
+	SET @mes_fin_semestre = 6
+	SET @fecha_comienzo_semestre = DATETIMEFROMPARTS(@anio, @mes_comienzo_semestre, 1, 0, 0, 0, 0)
+	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 30, 0, 0, 0, 0)		
+	END
+	
+	IF @semestre = 2	
+	BEGIN	
+	SET @mes_comienzo_semestre = 7	
+	SET @mes_fin_semestre = 12	
+	SET @fecha_comienzo_semestre = DATETIMEFROMPARTS(@anio, @mes_comienzo_semestre, 1, 0, 0, 0, 0)
+	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 31, 0, 0, 0, 0)
+	END
+
+SELECT TOP 5 cruceros.CRUCERO_ID,cruceros.CRUCERO_IDENTIFICADOR,marca.MARCA_NOMBRE fabricante,
+ cruceros.CRUCERO_MODELO modelo, ICE_CUBES.fn_DiasDeshabilitado(@anio,@fecha_comienzo_semestre,@fecha_fin_semestre,cruceros.CRUCERO_ID) 
+dias_fuera_servicio
+FROM ICE_CUBES.CRUCERO cruceros 
+--JOIN ICE_CUBES.MARCA fabricantes ON (fabricantes.cod_fabricante = cruceros.cod_fabricante)
+JOIN ICE_CUBES.MARCA marca ON (marca.MARCA_ID = cruceros.CRUCERO_MARCA_ID)
+ORDER BY dias_fuera_servicio DESC
+END
+
+
+
+GO
+
+
+
+
+CREATE FUNCTION ICE_CUBES.FN_PasajesVendidosRecorrido(@anio int,@fecha_comienzo_semestre datetime,@fecha_fin_semestre datetime, @cod_recorrido INT)
+RETURNS INT
+AS 
+BEGIN
+
+	DECLARE @PasajesVendidos INT
+
+	SELECT @PasajesVendidos = coalesce(COUNT(O.OPER_PASAJE_ID),0)
+					FROM ICE_CUBES.OPERACION O
+					WHERE O.OPER_VIAJE_ID IN (SELECT V.VIAJE_ID
+							   FROM ICE_CUBES.VIAJE v
+							   WHERE (V.VIAJE_RECORRIDO_ID = @cod_recorrido) AND YEAR(V.VIAJE_FINICIO) = @anio
+							   AND (V.VIAJE_FINICIO >= @fecha_comienzo_semestre) AND (V.VIAJE_FINICIO <= @fecha_fin_semestre))
+	
+	RETURN @PasajesVendidos
+END
+GO
+
+CREATE PROCEDURE ICE_CUBES.SP_top5_recorridos @anio int, @semestre int
+AS
+BEGIN	
+	
+DECLARE @mes_comienzo_semestre int
+DECLARE @mes_fin_semestre int
+DECLARE @fecha_comienzo_semestre datetime
+DECLARE @fecha_fin_semestre datetime
+	
+	IF @semestre = 1	
+	BEGIN	
+	SET @mes_comienzo_semestre = 1	
+	SET @mes_fin_semestre = 6
+	SET @fecha_comienzo_semestre = DATETIMEFROMPARTS(@anio, @mes_comienzo_semestre, 1, 0, 0, 0, 0)
+	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 30, 0, 0, 0, 0)		
+	END
+	
+	IF @semestre = 2	
+	BEGIN	
+	SET @mes_comienzo_semestre = 7	
+	SET @mes_fin_semestre = 12	
+	SET @fecha_comienzo_semestre = DATETIMEFROMPARTS(@anio, @mes_comienzo_semestre, 1, 0, 0, 0, 0)
+	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 31, 0, 0, 0, 0)
+	END
+
+SELECT TOP 5 R.RECO_ID, R.RECO_ESTADO, ICE_CUBES.FN_PasajesVendidosRecorrido(@anio,@fecha_comienzo_semestre,@fecha_fin_semestre,R.RECO_ID) pasajes_vendidos
+FROM ICE_CUBES.RECORRIDO R
+ORDER BY pasajes_vendidos DESC
+END
+GO
+
+
+
+
+CREATE FUNCTION ICE_CUBES.FN_CabinasLibresRecorrido(@anio int,@fecha_comienzo_semestre datetime,@fecha_fin_semestre datetime, @cod_recorrido INT)
+RETURNS INT
+AS 
+BEGIN
+
+	DECLARE @CabinasLibres INT
+
+	SELECT @CabinasLibres = coalesce(MAX(tabla.CabinasLibres),0) FROM(
+	SELECT ((SELECT COUNT(cabinas.cod_cabina)
+    				FROM MLJ.Cabinas cabinas WHERE cabinas.cod_crucero = (SELECT cod_crucero FROM MLJ.Viajes WHERE cod_viaje = pasajes.cod_viaje)) - COUNT(cabinas_reservadas.cod_cabina)) AS CabinasLibres
+	FROM MLJ.Pasajes pasajes JOIN MLJ.Cabinas_reservadas cabinas_reservadas ON (pasajes.cod_pasaje = cabinas_reservadas.cod_pasaje)
+	WHERE pasajes.cod_viaje IN (SELECT viajes.cod_viaje
+							   FROM MLJ.Viajes viajes
+							   WHERE (viajes.cod_recorrido = @cod_recorrido) AND YEAR(viajes.fecha_inicio) = @anio
+							   AND (viajes.fecha_inicio >= @fecha_comienzo_semestre) AND (viajes.fecha_inicio <= @fecha_fin_semestre))
+	GROUP BY pasajes.cod_viaje) AS tabla
+
+	RETURN @CabinasLibres
+END
+GO
+
+
+
+CREATE PROCEDURE ICE_CUBES.SP_top5_recorridosLibres @anio int, @semestre int
+AS
+BEGIN	
+	
+DECLARE @mes_comienzo_semestre int
+DECLARE @mes_fin_semestre int
+DECLARE @fecha_comienzo_semestre datetime
+DECLARE @fecha_fin_semestre datetime
+	
+	IF @semestre = 1	
+	BEGIN	
+	SET @mes_comienzo_semestre = 1	
+	SET @mes_fin_semestre = 6
+	SET @fecha_comienzo_semestre = DATETIMEFROMPARTS(@anio, @mes_comienzo_semestre, 1, 0, 0, 0, 0)
+	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 30, 0, 0, 0, 0)		
+	END
+	
+	IF @semestre = 2	
+	BEGIN	
+	SET @mes_comienzo_semestre = 7	
+	SET @mes_fin_semestre = 12	
+	SET @fecha_comienzo_semestre = DATETIMEFROMPARTS(@anio, @mes_comienzo_semestre, 1, 0, 0, 0, 0)
+	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 31, 0, 0, 0, 0)
+	END
+
+SELECT TOP 5 R.RECO_ID, R.RECO_ESTADO, MLJ.CabinasLibresRecorrido(@anio,@fecha_comienzo_semestre,@fecha_fin_semestre,cod_recorrido) pasajes_vendidos
+FROM ICE_CUBES.RECORRIDO R
+ORDER BY pasajes_vendidos DESC
+END
+GO
 
 /*************** Hasta acá va el entregable ***************/
 
