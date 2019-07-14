@@ -9,7 +9,7 @@ namespace FrbaCrucero.model
     public enum TipoCabina
     {
         [Description("Económica")] economica = 1,
-        [Description("Económica")] ejecutiva = 2,
-        [Description("Económica")] primera = 3
+        [Description("ejecutiva")] ejecutiva = 2,
+        [Description("primera")] primera = 3
     }
 }

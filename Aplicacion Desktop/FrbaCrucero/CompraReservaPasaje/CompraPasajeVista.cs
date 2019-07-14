@@ -55,7 +55,15 @@ namespace FrbaCrucero.CompraPasaje
 
         private void ViajesDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           unControllerCompraPasaje.buscarCabina(ViajesDGV.Rows[e.RowIndex]);
+           //unControllerCompraPasaje.buscarCabina(ViajesDGV.Rows[e.RowIndex]);
+
+           if (e.ColumnIndex == 0)
+           {
+               Int32 codViaje = Convert.ToInt32(ViajesDGV.Rows[e.RowIndex].Cells["viajeId"].Value.ToString());
+               DialogResult result = Program.openNextWindow(this, new CompraReservaPasaje.Cabinas(codViaje));
+               if (result == DialogResult.OK)
+                   ViajesDGV.ClearSelection();
+           }
         }
 
         private void CancelarB_Click(object sender, EventArgs e)
@@ -78,6 +86,11 @@ namespace FrbaCrucero.CompraPasaje
         internal void setPuertoDestino(Puerto puerto)
         {
             this.PuertoDestinoTB.Text = puerto.nombre;
+        }
+
+        private void PagarB_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -659,14 +659,14 @@ BEGIN
 
 	SELECT @DiasFueraDeServicio = coalesce(SUM(tabla.DiasFueraDeServicio),0) FROM(
 					SELECT 
-					CASE WHEN fe < @fecha_comienzo_semestre AND YEAR(fecha_alta) = @anio 
+					CASE WHEN fecha_baja < @fecha_comienzo_semestre AND YEAR(fecha_alta) = @anio 
 					AND fecha_alta <= @fecha_fin_semestre AND fecha_alta >= @fecha_comienzo_semestre THEN DATEDIFF(DAY, @fecha_comienzo_semestre, fecha_alta)
 					WHEN fecha_baja >= @fecha_comienzo_semestre AND fecha_alta <= @fecha_fin_semestre THEN DATEDIFF(DAY, fecha_baja, fecha_alta)
 					WHEN YEAR(fecha_baja) = @anio  AND (fecha_baja >= @fecha_comienzo_semestre)
 						AND fecha_alta >= @fecha_fin_semestre THEN DATEDIFF(DAY, fecha_baja, @fecha_fin_semestre)
 					END AS DiasFueraDeServicio
-	FROM ICE_CUBES.CRUCERO c
-	WHERE c.CRUCERO_ID = @cod_crucero AND permanente = 0) AS tabla
+	FROM ICE_CUBES.Bajas_de_servicio 
+	WHERE cod_crucero = @cod_crucero AND permanente = 0) AS tabla
 
 	RETURN @DiasFueraDeServicio
 END
@@ -773,14 +773,18 @@ BEGIN
 	DECLARE @CabinasLibres INT
 
 	SELECT @CabinasLibres = coalesce(MAX(tabla.CabinasLibres),0) FROM(
-	SELECT ((SELECT COUNT(cabinas.cod_cabina)
-    				FROM MLJ.Cabinas cabinas WHERE cabinas.cod_crucero = (SELECT cod_crucero FROM MLJ.Viajes WHERE cod_viaje = pasajes.cod_viaje)) - COUNT(cabinas_reservadas.cod_cabina)) AS CabinasLibres
-	FROM MLJ.Pasajes pasajes JOIN MLJ.Cabinas_reservadas cabinas_reservadas ON (pasajes.cod_pasaje = cabinas_reservadas.cod_pasaje)
-	WHERE pasajes.cod_viaje IN (SELECT viajes.cod_viaje
-							   FROM MLJ.Viajes viajes
-							   WHERE (viajes.cod_recorrido = @cod_recorrido) AND YEAR(viajes.fecha_inicio) = @anio
-							   AND (viajes.fecha_inicio >= @fecha_comienzo_semestre) AND (viajes.fecha_inicio <= @fecha_fin_semestre))
-	GROUP BY pasajes.cod_viaje) AS tabla
+	SELECT ((SELECT COUNT(c.CABINA_ID)
+    				FROM ICE_CUBES.CABINA C 
+					WHERE c.CABINA_CRUCERO_ID = (SELECT v.VIAJE_CRUCERO_ID FROM ICE_CUBES.VIAJE V WHERE v.VIAJE_ID = pasajes.OPER_VIAJE_ID))
+					 - (count (pasajes.OPER_CABINA_ID)
+					     ) ) as cabinaslibres 
+	FROM ICE_CUBES.OPERACION pasajes 
+	--JOIN MLJ.Cabinas_reservadas cabinas_reservadas ON (pasajes.OPER_PASAJE_ID = cabinas_reservadas.cod_pasaje)
+	WHERE pasajes.OPER_VIAJE_ID IN (SELECT viajes.VIAJE_ID
+							   FROM ICE_CUBES.VIAJE viajes
+							   WHERE (viajes.VIAJE_RECORRIDO_ID = @cod_recorrido) AND YEAR(viajes.VIAJE_FINICIO) = @anio
+							   AND (viajes.VIAJE_FINICIO >= @fecha_comienzo_semestre) AND (viajes.VIAJE_FINICIO <= @fecha_fin_semestre))
+   GROUP BY pasajes.OPER_VIAJE_ID) AS tabla
 
 	RETURN @CabinasLibres
 END
@@ -813,9 +817,47 @@ DECLARE @fecha_fin_semestre datetime
 	SET @fecha_fin_semestre = DATETIMEFROMPARTS(@anio, @mes_fin_semestre, 31, 0, 0, 0, 0)
 	END
 
-SELECT TOP 5 R.RECO_ID, R.RECO_ESTADO, MLJ.CabinasLibresRecorrido(@anio,@fecha_comienzo_semestre,@fecha_fin_semestre,cod_recorrido) pasajes_vendidos
+SELECT TOP 5 R.RECO_ID, R.RECO_ESTADO, ICE_CUBES.FN_CabinasLibresRecorrido(@anio,@fecha_comienzo_semestre,@fecha_fin_semestre,r.RECO_ID) pasajes_vendidos
 FROM ICE_CUBES.RECORRIDO R
 ORDER BY pasajes_vendidos DESC
+END
+GO
+
+CREATE PROCEDURE ICE_CUBES.SP_buscarCabinasDisponibles(@codViaje INT)
+AS
+BEGIN
+
+
+	SELECT C.CABINA_ID, C.CABINA_CRUCERO_ID, C.	, C.CABINA_TIPO, C.CABINA_PISO
+	FROM ICE_CUBES.CABINA C
+	WHERE C.CABINA_CRUCERO_ID = (SELECT V.VIAJE_CRUCERO_ID FROM ICE_CUBES.VIAJE V WHERE V.VIAJE_ID = @codViaje)
+		AND NOT C.CABINA_ID IN (SELECT O.OPER_CABINA_ID FROM ICE_CUBES.OPERACION O
+							   WHERE O.OPER_VIAJE_ID = @codViaje )
+
+END
+GO
+CREATE PROCEDURE ice_cubes.clienteViajaDurante(@inicio DATE, @fin DATE, @cod_cliente INT)
+AS BEGIN
+	SELECT o.OPER_PASAJE_ID
+	FROM ICE_CUBES.OPERACION o JOIN ICE_CUBES.VIAJE v ON o.OPER_VIAJE_ID = v.VIAJE_ID
+	WHERE o.OPER_CLIENTE = @cod_cliente 
+		  AND (v.VIAJE_FINICIO BETWEEN @inicio AND @fin 
+			   OR v.VIAJE_FFIN BETWEEN @inicio AND @fin)
+END
+GO
+CREATE PROCEDURE ice_cubes.sp_CrearCliente(@nombre VARCHAR(255), @apellido VARCHAR(255), @direccion VARCHAR(255), @telefono INT, @dni DECIMAL, @mail VARCHAR(255), @fechaNacimiento DATE)
+AS BEGIN
+	--INSERT INTO MLJ.Clientes
+	--(nombre, apellido, dni, direccion, telefono, mail, nacimiento)
+	--VALUES
+	--(@nombre, @apellido, @dni, @direccion, @telefono, @mail, @fechaNacimiento)
+
+	INSERT INTO ICE_CUBES.CLIENTE
+	(CLIE_NOMBRE, CLIE_APELLIDO, CLIE_DNI, CLI_DIR, CLI_TELEFONO, CLI_MAIL, CLI_FECHA_NAC)
+	VALUES
+	(@nombre, @apellido, @dni, @direccion, @telefono, @mail, @fechaNacimiento)
+
+	RETURN SCOPE_IDENTITY()
 END
 GO
 

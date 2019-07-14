@@ -106,11 +106,17 @@
     <Compile Include="CompraReservaPasaje\CompraPasajeVista.Designer.cs">
       <DependentUpon>CompraPasajeVista.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompraReservaPasaje\PagoVista.cs">
+    <Compile Include="CompraReservaPasaje\DatosCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CompraReservaPasaje\PagoVista.Designer.cs">
-      <DependentUpon>PagoVista.cs</DependentUpon>
+    <Compile Include="CompraReservaPasaje\DatosCliente.Designer.cs">
+      <DependentUpon>DatosCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\SeleccionCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\SeleccionCliente.Designer.cs">
+      <DependentUpon>SeleccionCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion\ConexionSQLS.cs" />
     <Compile Include="Conexion\Dictionary.cs" />
@@ -179,6 +185,18 @@
     <Compile Include="model\Usuario\Rol.cs" />
     <Compile Include="model\Usuario\Usuario.cs" />
     <Compile Include="model\Viaje\Viaje.cs" />
+    <Compile Include="CompraReservaPasaje\Cabinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\Cabinas.Designer.cs">
+      <DependentUpon>Cabinas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\DNI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompraReservaPasaje\DNI.Designer.cs">
+      <DependentUpon>DNI.cs</DependentUpon>
+    </Compile>
     <Compile Include="PagoReserva\BusquedaReservaVista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,14 +225,17 @@
     <EmbeddedResource Include="CompraReservaPasaje\BuscarCabinaVista.resx">
       <DependentUpon>BuscarCabinaVista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompraReservaPasaje\DatosCliente.resx">
+      <DependentUpon>DatosCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompraReservaPasaje\SeleccionCliente.resx">
+      <DependentUpon>SeleccionCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GeneracionViaje\ListadoRecorridos\ListadoRecorridosView.resx">
       <DependentUpon>ListadoRecorridosView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompraReservaPasaje\CompraPasajeVista.resx">
       <DependentUpon>CompraPasajeVista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CompraReservaPasaje\PagoVista.resx">
-      <DependentUpon>PagoVista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEstadistico\ListadoTop5.resx">
       <DependentUpon>ListadoTop5.cs</DependentUpon>
@@ -224,6 +245,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\MenuPpal.resx">
       <DependentUpon>MenuPpal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompraReservaPasaje\Cabinas.resx">
+      <DependentUpon>Cabinas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompraReservaPasaje\DNI.resx">
+      <DependentUpon>DNI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagoReserva\BusquedaReservaVista.resx">
       <DependentUpon>BusquedaReservaVista.cs</DependentUpon>
@@ -255,6 +282,7 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="PagoCopia\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

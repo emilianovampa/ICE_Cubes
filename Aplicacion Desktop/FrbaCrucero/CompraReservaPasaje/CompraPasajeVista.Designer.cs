@@ -37,15 +37,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.PagarB = new System.Windows.Forms.Button();
-            this.ReservaB = new System.Windows.Forms.Button();
             this.CancelarB = new System.Windows.Forms.Button();
             this.BuscarViajesB = new System.Windows.Forms.Button();
             this.SeleccionarPDestinoB = new System.Windows.Forms.Button();
             this.ViajesDGV = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ComprarReservar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RecorridoB = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cabinaB = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ViajesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,27 +135,9 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Fecha Hasta";
             // 
-            // PagarB
-            // 
-            this.PagarB.Location = new System.Drawing.Point(253, 411);
-            this.PagarB.Name = "PagarB";
-            this.PagarB.Size = new System.Drawing.Size(75, 23);
-            this.PagarB.TabIndex = 12;
-            this.PagarB.Text = "Pagar";
-            this.PagarB.UseVisualStyleBackColor = true;
-            // 
-            // ReservaB
-            // 
-            this.ReservaB.Location = new System.Drawing.Point(334, 412);
-            this.ReservaB.Name = "ReservaB";
-            this.ReservaB.Size = new System.Drawing.Size(75, 23);
-            this.ReservaB.TabIndex = 13;
-            this.ReservaB.Text = "Reservar";
-            this.ReservaB.UseVisualStyleBackColor = true;
-            // 
             // CancelarB
             // 
-            this.CancelarB.Location = new System.Drawing.Point(415, 411);
+            this.CancelarB.Location = new System.Drawing.Point(528, 411);
             this.CancelarB.Name = "CancelarB";
             this.CancelarB.Size = new System.Drawing.Size(75, 23);
             this.CancelarB.TabIndex = 14;
@@ -188,6 +169,7 @@
             // 
             this.ViajesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ViajesDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ComprarReservar,
             this.RecorridoB,
             this.cabinaB});
             this.ViajesDGV.Location = new System.Drawing.Point(11, 176);
@@ -195,6 +177,21 @@
             this.ViajesDGV.Size = new System.Drawing.Size(592, 229);
             this.ViajesDGV.TabIndex = 17;
             this.ViajesDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViajesDGV_CellContentClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(109, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(300, 26);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Compra / Reserva de pasajes";
+            // 
+            // ComprarReservar
+            // 
+            this.ComprarReservar.HeaderText = "Comprar - Reservar";
+            this.ComprarReservar.Name = "ComprarReservar";
             // 
             // RecorridoB
             // 
@@ -212,16 +209,6 @@
             this.cabinaB.ToolTipText = "Visualizar";
             this.cabinaB.UseColumnTextForButtonValue = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(109, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(300, 26);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Compra / Reserva de pasajes";
-            // 
             // ComprarPasajeVista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,8 +219,6 @@
             this.Controls.Add(this.SeleccionarPDestinoB);
             this.Controls.Add(this.BuscarViajesB);
             this.Controls.Add(this.CancelarB);
-            this.Controls.Add(this.ReservaB);
-            this.Controls.Add(this.PagarB);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -262,14 +247,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button PagarB;
-        private System.Windows.Forms.Button ReservaB;
         private System.Windows.Forms.Button CancelarB;
         private System.Windows.Forms.Button BuscarViajesB;
         private System.Windows.Forms.Button SeleccionarPDestinoB;
         private System.Windows.Forms.DataGridView ViajesDGV;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewButtonColumn ComprarReservar;
         private System.Windows.Forms.DataGridViewButtonColumn RecorridoB;
         private System.Windows.Forms.DataGridViewButtonColumn cabinaB;
-        private System.Windows.Forms.Label label2;
     }
 }

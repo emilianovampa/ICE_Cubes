@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FrbaCrucero.model
 {
-    class Viaje
+    public class Viaje
     {
         [System.ComponentModel.DisplayName("Codigo de Viaje")]
         public int viajeId { get; set; }
@@ -84,6 +84,55 @@ namespace FrbaCrucero.model
                 conexion.Close();
             }
             return listadoViaje;
+        }
+
+        public static Viaje getViaje(Int32 idViaje)
+        {
+            Viaje viaje = null;
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+
+                conexion.Open();
+                SqlCommand consulta2 = new SqlCommand("SELECT VIAJE_ID, VIAJE_CRUCERO_ID, VIAJE_RECORRIDO_ID, VIAJE_FINICIO, VIAJE_FFIN FROM ICE_CUBES.Viaje WHERE VIAJE_ID = @id", conexion);
+                consulta2.Parameters.AddWithValue("@id", idViaje);
+                SqlDataReader resultados = consulta2.ExecuteReader();
+
+                while (resultados.Read())
+                {
+                    viaje = new Viaje(resultados.GetInt32(0),
+                                                resultados.GetInt32(1),
+                                                resultados.GetInt32(2),
+                                                resultados.GetDateTime(3),
+                                                resultados.GetDateTime(4));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return viaje;
+        }
+
+
+
+        public static List<Cabina> buscarCabinasDisponibles(Int32 codViaje)
+        {
+            List<Cabina> cabinas = new List<Cabina>();
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            SqlCommand consulta = new SqlCommand("ICE_CUBES.SP_buscarCabinasDisponibles", conexion);
+            consulta.CommandType = CommandType.StoredProcedure;
+            consulta.Parameters.AddWithValue("@codViaje", codViaje);
+            conexion.Open();
+            SqlDataReader resultados = consulta.ExecuteReader();
+            while (resultados.Read())
+                cabinas.Add(new Cabina(resultados.GetInt32(0), resultados.GetInt32(1), resultados.GetDecimal(2), resultados.GetInt32(3), resultados.GetDecimal(4)));
+            conexion.Close();
+            return cabinas;
         }
     }
 }
