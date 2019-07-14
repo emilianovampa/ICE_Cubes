@@ -41,7 +41,7 @@ namespace FrbaCrucero.Menu
 
         private void btn_abmRol_Click(object sender, EventArgs e)
         {
-            new AbmRolForm().ShowDialog();
+            new MenuRolView().ShowDialog();
         }
 
         private void btn_pagoReserva_Click(object sender, EventArgs e)

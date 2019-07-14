@@ -9,14 +9,14 @@ namespace FrbaCrucero.model
     public class Funcionalidad
     {
         // Atributos
-        private decimal idFuncion;
-        private string nombreFuncionalidad { get; set; }
+        private decimal idFuncionalidad;
+        private string nombreFuncionalidad;
 
         // Accessors
-        public decimal IdFuncion
+        public decimal IdFuncionalidad
         {
-            get { return idFuncion; }
-            set { idFuncion = value; }
+            get { return idFuncionalidad; }
+            set { idFuncionalidad = value; }
         }
         public string NombreFuncionalidad
         {
@@ -25,15 +25,11 @@ namespace FrbaCrucero.model
         }
 
         // Constructor
-        public Funcionalidad(decimal idFuncion, string nombreFuncionalidad)
+        public Funcionalidad(decimal idFuncionalidad, string nombreFuncionalidad)
         {
             // TODO: Complete member initialization
-            IdFuncion = idFuncion;
+            IdFuncionalidad = idFuncionalidad;
             NombreFuncionalidad = nombreFuncionalidad;
         } 
-
-
-
-
     }
 }

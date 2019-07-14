@@ -14,7 +14,7 @@ namespace FrbaCrucero
     {
         private decimal rolId;
         private string rolDescripcion; 
-        private Boolean estado; 
+        private bool estado; 
         private List<Funcionalidad> funcionalidades  = new List<Funcionalidad>();
 
         // Accessors
@@ -28,7 +28,7 @@ namespace FrbaCrucero
             get { return rolDescripcion; }
             set { rolDescripcion = value; }
         }
-        public Boolean Estado
+        public bool Estado
         {
             get { return estado; }
             set { estado = value; }
@@ -42,7 +42,14 @@ namespace FrbaCrucero
         // Constructores
         public Rol() { }
 
-        public Rol(decimal idRol, Boolean estado, String desc)
+        public Rol(string rolDescripcion, bool estado, List<Funcionalidad> funcionalidades)
+        {
+            RolDescripcion = rolDescripcion;
+            Estado = estado;
+            Funcionalidades = funcionalidades;
+        }
+
+        public Rol(decimal idRol, bool estado, String desc)
         {
             this.RolId = idRol;
             this.RolDescripcion = desc;
@@ -51,28 +58,12 @@ namespace FrbaCrucero
             this.obetenerFuncionalidadesByRol(idRol);
         }
 
-        public void obtenerFuncionalidades()
+        public Rol(decimal rolId, string rolDescripcion, bool estado, List<Funcionalidad> funcionalidades)
         {
-            SqlConnection conexion = ConexionSQLS.getConeccion();
-            try
-            {
-                SqlCommand consulta = new SqlCommand("SELECT * FROM ICE_CUBES.FUNCIONALIDAD", conexion);
-                conexion.Open();
-                SqlDataReader funcResultados = consulta.ExecuteReader();
-                while (funcResultados.Read())
-                {
-                    this.funcionalidades.Add(new Funcionalidad(funcResultados.GetDecimal(0), funcResultados.GetString(1)));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
-            }
-
+            RolId = rolId;
+            RolDescripcion = RolDescripcion;
+            Estado = estado;
+            Funcionalidades = funcionalidades;
         }
 
         public void darDeAltaRol(string rolDescripcion, decimal idFuncionalidad)
@@ -125,7 +116,7 @@ namespace FrbaCrucero
                 while (funcResultados.Read())
                 {
                     //funcionalidades.Add(new Funcionalidad(funcResultados.GetInt32(0), funcResultados.GetString(1)));
-                    this.funcionalidades.Add(new Funcionalidad(funcResultados.GetDecimal(0), funcResultados.GetString(1)));
+                    Funcionalidades.Add(new Funcionalidad(funcResultados.GetDecimal(0), funcResultados.GetString(1)));
                 }
             }
             catch (Exception ex)
@@ -139,5 +130,141 @@ namespace FrbaCrucero
             
         }
 
+        private List<Funcionalidad> traerFuncionalidadesByRol(decimal idRol)
+        {
+            List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                SqlCommand consulta = new SqlCommand("SELECT f.FUNCION_ID, f.FUNCION_NOMBRE FROM ICE_CUBES.FUNCIONALIDAD f, ICE_CUBES.ROL_FUNCIONALIDAD rf WHERE rf.ID_ROL = @idRol AND f.FUNCION_ID = rf.ID_FUNCIONALIDAD", conexion);
+                consulta.Parameters.AddWithValue("@idRol", idRol);
+                conexion.Open();
+                SqlDataReader funcResultados = consulta.ExecuteReader();
+                while (funcResultados.Read())
+                {
+                    funcionalidades.Add(new Funcionalidad(funcResultados.GetDecimal(0), funcResultados.GetString(1)));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return funcionalidades;
+        }
+
+        public List<Rol> traerRoles()
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            List<Rol> roles = new List<Rol>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM ICE_CUBES.ROL", conexion);
+                conexion.Open();
+                SqlDataReader result = cmd.ExecuteReader();
+                while (result.Read())
+                {
+                    roles.Add(new Rol(result.GetDecimal(0), result.GetString(1), result.GetBoolean(2), this.traerFuncionalidadesByRol(result.GetDecimal(0))));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return roles;
+        }
+
+        public List<Funcionalidad> traerFuncionalidades()
+        {
+            List<Funcionalidad> funcionalidades = new List<Funcionalidad>();
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            try
+            {
+                SqlCommand consulta = new SqlCommand("SELECT * FROM ICE_CUBES.FUNCIONALIDAD;", conexion);
+                conexion.Open();
+                SqlDataReader funcResultados = consulta.ExecuteReader();
+                while (funcResultados.Read())
+                {
+                    funcionalidades.Add(new Funcionalidad(funcResultados.GetDecimal(0), funcResultados.GetString(1)));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return funcionalidades;
+        }
+
+        public void eliminarRol(Rol unRol) 
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            conexion.Open();
+            SqlTransaction transaction = conexion.BeginTransaction();
+            SqlCommand borrarFuncionalidades = new SqlCommand("DELETE FROM ICE_CUBES.ROL_FUNCIONALIDAD WHERE ID_ROL = @idRol", conexion, transaction);
+            borrarFuncionalidades.Parameters.AddWithValue("@idRol", unRol.RolId);
+            try
+            {
+                borrarFuncionalidades.ExecuteNonQuery();
+                SqlCommand comando = new SqlCommand("UPDATE ICE_CUBES.ROL SET ROL_ESTADO = 0 WHERE ROL_ID = @idRol", conexion, transaction);
+                comando.Parameters.AddWithValue("@idRol", unRol.RolId);
+                comando.ExecuteNonQuery();
+                transaction.Commit();
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                conexion.Close();
+                throw ex;
+            }
+        }
+
+        public void actualizarRol(Rol nuevoRol, Rol viejoRol)
+        {
+            SqlConnection conexion = ConexionSQLS.getConeccion();
+            conexion.Open();
+            SqlTransaction transaction = conexion.BeginTransaction();
+            SqlCommand comando2 = new SqlCommand("", conexion, transaction);
+            SqlCommand borrarFuncionalidades = new SqlCommand("DELETE FROM ICE_CUBES.ROL_FUNCIONALIDAD WHERE ID_ROL = @idRol", conexion, transaction);
+            borrarFuncionalidades.Parameters.AddWithValue("@idRol", viejoRol.RolId);
+            try
+            {
+                borrarFuncionalidades.ExecuteNonQuery();
+                SqlCommand comando = new SqlCommand("UPDATE ICE_CUBES.ROL SET ROL_DESCRIPCION = @desc, ROL_ESTADO = @estado WHERE ROL_ID = @idRol", conexion, transaction);
+                comando.Parameters.AddWithValue("@idRol", viejoRol.RolId);
+                comando.Parameters.AddWithValue("@desc", viejoRol.RolDescripcion);
+                comando.Parameters.AddWithValue("@estado", viejoRol.Estado);
+                comando.ExecuteNonQuery();
+
+                comando2.Parameters.AddWithValue("@idRol", viejoRol.RolId);
+                int i = 0;
+                foreach (Funcionalidad func in nuevoRol.Funcionalidades)
+                {
+                    comando2.CommandText = "INSERT INTO ICE_CUBES.ROL_FUNCIONALIDAD (ID_ROL,ID_FUNCIONALIDAD) VALUES (@idRol,@idFunc" + i + ")";
+                    comando2.Parameters.AddWithValue("@idFunc" + i, func.IdFuncionalidad);
+                    comando2.ExecuteNonQuery();
+                    i++;
+                }
+                transaction.Commit();
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                conexion.Close();
+                throw ex;
+            }
+        }
     }
 }

@@ -122,7 +122,7 @@ namespace FrbaCrucero
 
         public Boolean poseeFuncionalidad(int idFuncion)
         {
-            return this.usuarioRol.Funcionalidades.Exists(X => X.IdFuncion == idFuncion);
+            return this.usuarioRol.Funcionalidades.Exists(X => X.IdFuncionalidad == idFuncion);
         }
 
 
