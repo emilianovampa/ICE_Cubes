@@ -43,8 +43,6 @@
             this.ViajesDGV = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.ComprarReservar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.RecorridoB = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cabinaB = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ViajesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,9 +167,7 @@
             // 
             this.ViajesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ViajesDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ComprarReservar,
-            this.RecorridoB,
-            this.cabinaB});
+            this.ComprarReservar});
             this.ViajesDGV.Location = new System.Drawing.Point(11, 176);
             this.ViajesDGV.Name = "ViajesDGV";
             this.ViajesDGV.Size = new System.Drawing.Size(592, 229);
@@ -192,22 +188,6 @@
             // 
             this.ComprarReservar.HeaderText = "Comprar - Reservar";
             this.ComprarReservar.Name = "ComprarReservar";
-            // 
-            // RecorridoB
-            // 
-            this.RecorridoB.HeaderText = "Recorrido";
-            this.RecorridoB.Name = "RecorridoB";
-            this.RecorridoB.Text = "Visualizar";
-            this.RecorridoB.ToolTipText = "Visualizar";
-            this.RecorridoB.UseColumnTextForButtonValue = true;
-            // 
-            // cabinaB
-            // 
-            this.cabinaB.HeaderText = "Cabinas Disponibles";
-            this.cabinaB.Name = "cabinaB";
-            this.cabinaB.Text = "Visualizar";
-            this.cabinaB.ToolTipText = "Visualizar";
-            this.cabinaB.UseColumnTextForButtonValue = true;
             // 
             // ComprarPasajeVista
             // 
@@ -253,7 +233,5 @@
         private System.Windows.Forms.DataGridView ViajesDGV;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewButtonColumn ComprarReservar;
-        private System.Windows.Forms.DataGridViewButtonColumn RecorridoB;
-        private System.Windows.Forms.DataGridViewButtonColumn cabinaB;
     }
 }
