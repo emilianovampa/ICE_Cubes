@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbmCrucero\Baja\BajaCrucero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCrucero\Baja\BajaCrucero.Designer.cs">
+      <DependentUpon>BajaCrucero.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCrucero\CruceroController.cs" />
     <Compile Include="AbmCrucero\CruceroView.cs">
       <SubType>Form</SubType>
@@ -116,6 +122,7 @@
       <DependentUpon>ListadoRecorridosView.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneracionViaje\Viaje\ViajeController.cs" />
+    <Compile Include="model\Crucero\Servicio.cs" />
     <Compile Include="model\ModoInteraccion.cs" />
     <Compile Include="ListadoEstadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -167,6 +174,9 @@
     <Compile Include="ParametroStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AbmCrucero\Baja\BajaCrucero.resx">
+      <DependentUpon>BajaCrucero.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmCrucero\CruceroView.resx">
       <DependentUpon>CruceroView.cs</DependentUpon>
     </EmbeddedResource>
