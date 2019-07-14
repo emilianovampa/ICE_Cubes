@@ -24,7 +24,7 @@ namespace FrbaCrucero.AbmRol
             this.menuRol = menuRol;
             rol = new Rol();
             this.funcionalidades = rol.traerFuncionalidades();
-            this.comboBoxFuncionalidades.DisplayMember = "descFuncion";
+            this.comboBoxFuncionalidades.DisplayMember = "nombreFuncionalidad";
             this.comboBoxFuncionalidades.ValueMember = "this";
             this.comboBoxFuncionalidades.DataSource = funcionalidades;
         }
