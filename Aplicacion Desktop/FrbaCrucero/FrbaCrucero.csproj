@@ -148,10 +148,6 @@
     <Compile Include="model\Crucero\Cabina\Cabina.cs" />
     <Compile Include="model\Crucero\Cabina\TipoCabina.cs" />
     <Compile Include="model\Crucero\Crucero.cs" />
-    <Compile Include="model\Crucero\Estado\Activo.cs" />
-    <Compile Include="model\Crucero\Estado\EstadoCrucero.cs" />
-    <Compile Include="model\Crucero\Estado\FueraServicio.cs" />
-    <Compile Include="model\Crucero\Estado\Jubilado.cs" />
     <Compile Include="model\Crucero\Marca.cs" />
     <Compile Include="model\Crucero\TipoServicio.cs" />
     <Compile Include="model\Operacion\Compra.cs" />

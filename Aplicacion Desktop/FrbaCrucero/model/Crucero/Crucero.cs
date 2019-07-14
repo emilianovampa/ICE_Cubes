@@ -14,8 +14,17 @@ namespace FrbaCrucero.model
 //        [System.ComponentModel.DisplayName("Cabinas")]
         public HashSet<Cabina> cabinas = new HashSet<Cabina>();
 
-//        [System.ComponentModel.DisplayName("Estado")]
-        public EstadoCrucero estado;
+        [System.ComponentModel.DisplayName("Estado")]
+        public String estado { get {return determinarEstado();}}
+
+        private string determinarEstado()
+        {
+ 	        if (identificador == 0)
+            {
+                return "Nuevo";
+            }
+            return "Activo";
+        }
 
         [System.ComponentModel.DisplayName("Fecha de Alta")]
         public Nullable<DateTime> fechaAlta { get; set;}
@@ -24,6 +33,13 @@ namespace FrbaCrucero.model
         public Marca marca;
 
 //        [System.ComponentModel.DisplayName("Tipo de Servicio")]
-        public TipoServicio servicio;
+        public Servicio servicio;
+
+        public Crucero() //Constructor para un crucero nuevo
+        {
+            identificador = 0;
+            servicio = new Servicio();  
+        }
+            
     }
 }

@@ -27,8 +27,13 @@ namespace FrbaCrucero.AbmCrucero
             MarcasCombo.SelectedValue = idMarca;
         }
 
+        internal void setearListadoServicios(BindingSource servicios, int idServicio)
+        {
+            ServicioCombo.DataSource = servicios;
+            ServicioCombo.SelectedValue = idServicio;
+        }
 
-
+        
 
     }
 }

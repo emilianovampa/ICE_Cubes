@@ -19,6 +19,13 @@ namespace FrbaCrucero.model{
             this.idServicio = idServicio;
             this.nombre = nombre;
         }
+
+        public Servicio()
+        {
+            Servicio servicio = getServicio().First<Servicio>();
+            this.idServicio = idServicio;
+            this.nombre = nombre;
+    }
         public static List<Servicio> getServicio()
         {
             List<Servicio> servicios = new List<Servicio>();

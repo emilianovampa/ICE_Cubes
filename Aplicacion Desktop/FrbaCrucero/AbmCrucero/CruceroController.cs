@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +23,8 @@ namespace FrbaCrucero.AbmCrucero
         {
             vista.setearListadoMarcas(new BindingSource(new BindingList<Marca>(Marca.getMarcas()), null), 
                                       crucero.marca.idMarca);
-            vista.setearListadoServicios(new BindingSource(new BindingList<Servicio>(S
-
+            vista.setearListadoServicios(new BindingSource(new BindingList<Servicio>(Servicio.getServicio()),null),
+                                         crucero.servicio.idServicio);
         }
 
     }
