@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbBoxQuitarFuncs = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.radioBtnSi = new System.Windows.Forms.RadioButton();
-            this.cmbBoxAgregarFuncs = new System.Windows.Forms.ComboBox();
+            this.cmbBoxEstado = new System.Windows.Forms.ComboBox();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.cmbBoxFuncionalidades = new System.Windows.Forms.ComboBox();
             this.txtBoxDescripcion = new System.Windows.Forms.TextBox();
             this.lblHabilitado = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,15 +40,16 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.txtBoxFuncionalidades = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbBoxQuitarFuncs);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.radioBtnSi);
-            this.groupBox1.Controls.Add(this.cmbBoxAgregarFuncs);
+            this.groupBox1.Controls.Add(this.cmbBoxEstado);
+            this.groupBox1.Controls.Add(this.btnQuitar);
+            this.groupBox1.Controls.Add(this.btnAgregar);
+            this.groupBox1.Controls.Add(this.cmbBoxFuncionalidades);
             this.groupBox1.Controls.Add(this.txtBoxDescripcion);
             this.groupBox1.Controls.Add(this.lblHabilitado);
             this.groupBox1.Controls.Add(this.label2);
@@ -56,47 +57,51 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.groupBox1.Location = new System.Drawing.Point(27, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(545, 225);
+            this.groupBox1.Size = new System.Drawing.Size(545, 199);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Rol";
             // 
-            // cmbBoxQuitarFuncs
+            // cmbBoxEstado
             // 
-            this.cmbBoxQuitarFuncs.FormattingEnabled = true;
-            this.cmbBoxQuitarFuncs.Location = new System.Drawing.Point(272, 119);
-            this.cmbBoxQuitarFuncs.Name = "cmbBoxQuitarFuncs";
-            this.cmbBoxQuitarFuncs.Size = new System.Drawing.Size(240, 23);
-            this.cmbBoxQuitarFuncs.TabIndex = 13;
+            this.cmbBoxEstado.FormattingEnabled = true;
+            this.cmbBoxEstado.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.cmbBoxEstado.Location = new System.Drawing.Point(272, 161);
+            this.cmbBoxEstado.Name = "cmbBoxEstado";
+            this.cmbBoxEstado.Size = new System.Drawing.Size(240, 23);
+            this.cmbBoxEstado.TabIndex = 18;
             // 
-            // label3
+            // btnQuitar
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label3.Location = new System.Drawing.Point(22, 120);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 19);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Quitar Funcionalidades";
+            this.btnQuitar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnQuitar.Location = new System.Drawing.Point(422, 108);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(90, 30);
+            this.btnQuitar.TabIndex = 17;
+            this.btnQuitar.Text = "Quitar";
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
-            // radioBtnSi
+            // btnAgregar
             // 
-            this.radioBtnSi.AutoSize = true;
-            this.radioBtnSi.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.radioBtnSi.Location = new System.Drawing.Point(272, 181);
-            this.radioBtnSi.Name = "radioBtnSi";
-            this.radioBtnSi.Size = new System.Drawing.Size(37, 23);
-            this.radioBtnSi.TabIndex = 10;
-            this.radioBtnSi.Text = "Si";
-            this.radioBtnSi.UseVisualStyleBackColor = true;
+            this.btnAgregar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAgregar.Location = new System.Drawing.Point(272, 108);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(90, 30);
+            this.btnAgregar.TabIndex = 16;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // cmbBoxAgregarFuncs
+            // cmbBoxFuncionalidades
             // 
-            this.cmbBoxAgregarFuncs.FormattingEnabled = true;
-            this.cmbBoxAgregarFuncs.Location = new System.Drawing.Point(272, 79);
-            this.cmbBoxAgregarFuncs.Name = "cmbBoxAgregarFuncs";
-            this.cmbBoxAgregarFuncs.Size = new System.Drawing.Size(240, 23);
-            this.cmbBoxAgregarFuncs.TabIndex = 5;
+            this.cmbBoxFuncionalidades.FormattingEnabled = true;
+            this.cmbBoxFuncionalidades.Location = new System.Drawing.Point(272, 79);
+            this.cmbBoxFuncionalidades.Name = "cmbBoxFuncionalidades";
+            this.cmbBoxFuncionalidades.Size = new System.Drawing.Size(240, 23);
+            this.cmbBoxFuncionalidades.TabIndex = 5;
             // 
             // txtBoxDescripcion
             // 
@@ -110,7 +115,7 @@
             // 
             this.lblHabilitado.AutoSize = true;
             this.lblHabilitado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblHabilitado.Location = new System.Drawing.Point(22, 181);
+            this.lblHabilitado.Location = new System.Drawing.Point(22, 161);
             this.lblHabilitado.Name = "lblHabilitado";
             this.lblHabilitado.Size = new System.Drawing.Size(60, 19);
             this.lblHabilitado.TabIndex = 3;
@@ -122,9 +127,9 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label2.Location = new System.Drawing.Point(22, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 19);
+            this.label2.Size = new System.Drawing.Size(106, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Agregar Funcionalidades";
+            this.label2.Text = "Funcionalidades";
             // 
             // label1
             // 
@@ -139,7 +144,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancelar.Location = new System.Drawing.Point(27, 275);
+            this.btnCancelar.Location = new System.Drawing.Point(27, 372);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(90, 30);
             this.btnCancelar.TabIndex = 13;
@@ -150,7 +155,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnLimpiar.Location = new System.Drawing.Point(246, 275);
+            this.btnLimpiar.Location = new System.Drawing.Point(256, 372);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(90, 30);
             this.btnLimpiar.TabIndex = 14;
@@ -161,7 +166,7 @@
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnModificar.Location = new System.Drawing.Point(482, 275);
+            this.btnModificar.Location = new System.Drawing.Point(482, 372);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(90, 30);
             this.btnModificar.TabIndex = 15;
@@ -169,11 +174,21 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // txtBoxFuncionalidades
+            // 
+            this.txtBoxFuncionalidades.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtBoxFuncionalidades.Location = new System.Drawing.Point(27, 247);
+            this.txtBoxFuncionalidades.Multiline = true;
+            this.txtBoxFuncionalidades.Name = "txtBoxFuncionalidades";
+            this.txtBoxFuncionalidades.Size = new System.Drawing.Size(545, 112);
+            this.txtBoxFuncionalidades.TabIndex = 19;
+            // 
             // ModificacionRolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 341);
+            this.ClientSize = new System.Drawing.Size(604, 414);
+            this.Controls.Add(this.txtBoxFuncionalidades);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnCancelar);
@@ -184,22 +199,24 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioBtnSi;
-        private System.Windows.Forms.ComboBox cmbBoxAgregarFuncs;
+        private System.Windows.Forms.ComboBox cmbBoxFuncionalidades;
         private System.Windows.Forms.TextBox txtBoxDescripcion;
         private System.Windows.Forms.Label lblHabilitado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbBoxQuitarFuncs;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnQuitar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ComboBox cmbBoxEstado;
+        private System.Windows.Forms.TextBox txtBoxFuncionalidades;
     }
 }

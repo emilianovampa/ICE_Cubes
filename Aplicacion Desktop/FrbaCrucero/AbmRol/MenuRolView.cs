@@ -35,7 +35,7 @@ namespace FrbaCrucero.AbmRol
             if (e.ColumnIndex == this.checkBoxColumnEliminar.Index)
             {
                 new Rol().eliminarRol(this.dataGridView.Rows[e.RowIndex].DataBoundItem as Rol);
-                updateDataGridView();
+                this.updateDataGridView();
             }
 
             if (e.ColumnIndex == this.btnColumnModificar.Index)

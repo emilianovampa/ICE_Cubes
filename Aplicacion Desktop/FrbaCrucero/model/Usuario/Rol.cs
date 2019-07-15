@@ -16,6 +16,8 @@ namespace FrbaCrucero
         private string rolDescripcion; 
         private bool estado; 
         private List<Funcionalidad> funcionalidades  = new List<Funcionalidad>();
+        private TextBox textBox;
+        private List<Funcionalidad> list;
 
         // Accessors
         public decimal RolId
@@ -265,6 +267,11 @@ namespace FrbaCrucero
                 conexion.Close();
                 throw ex;
             }
+        }
+
+        public void cargarNuevoRol(Rol unRol)
+        { 
+        
         }
     }
 }
